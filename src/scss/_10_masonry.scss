@@ -1,0 +1,158 @@
+/*===============================================*/
+/* 10. MASONRY GALLERY							 */
+/*===============================================*/
+.masonry-col.w100{
+	width:100%;
+}
+
+/* ----------------------------------------------*/
+/* 10.1 Three Column No Gutter		 			 */
+/* ----------------------------------------------*/
+.three-col .grid-sizer{
+	width:33.33%;
+}
+
+.three-col .gutter-sizer{
+	width:0;
+}
+
+.three-col .masonry-col.w33{
+	width:33.33%;
+}
+
+.three-col .masonry-col.w66{
+	width:66.67%;
+}
+
+
+/* ----------------------------------------------*/
+/* 10.2 Three Column With Gutter	 			 */
+/* ----------------------------------------------*/
+.three-col.with-gutter .grid-sizer{
+	width:31%;
+}
+
+.three-col.with-gutter .gutter-sizer{
+	width:3.5%;
+}
+
+.three-col.with-gutter .masonry-col{
+	margin-bottom:30px;
+}
+
+
+.three-col.with-gutter .masonry-col.w33{
+	width:31%;
+}
+
+.three-col.with-gutter .masonry-col.w66{
+	width:62%;
+}
+
+/* ----------------------------------------------*/
+/* 10.3 Four Column No Gutter		 			 */
+/* ----------------------------------------------*/
+.four-col .grid-sizer{
+	width:25%;
+}
+
+.four-col .gutter-sizer{
+	width:0;
+}
+
+.four-col .masonry-col.w25{
+	width:25%;
+}
+
+.four-col .masonry-col.w50{
+	width:50%;
+}
+
+.four-col .masonry-col.w75{
+	width:75%;
+}
+
+/* ----------------------------------------------*/
+/* 10.4 Four Column With Gutter		 			 */
+/* ----------------------------------------------*/
+.four-col.with-gutter .grid-sizer{
+	width:23%;
+}
+
+.four-col.with-gutter .gutter-sizer{
+	width:2.666%;
+}
+
+.four-col.with-gutter .masonry-col{
+	margin-bottom:25px;
+}
+
+.four-col.with-gutter .masonry-col.w25{
+	width:23%;
+}
+
+.four-col.with-gutter .masonry-col.w50{
+	width:46%;
+}
+
+.four-col.with-gutter .masonry-col.w75{
+	width:69%;
+}
+
+/* ----------------------------------------------*/
+/* 10.5 Five Column No Gutter		 			 */
+/* ----------------------------------------------*/
+.five-col .grid-sizer{
+	width:20%;
+}
+
+.five-col .gutter-sizer{
+	width:0;
+}
+
+.five-col .masonry-col.w20{
+	width:20%;
+}
+
+.five-col .masonry-col.w40{
+	width:40%;
+}
+
+.five-col .masonry-col.w60{
+	width:60%;
+}
+
+.five-col .masonry-col.w80{
+	width:80%;
+}
+
+/* ----------------------------------------------*/
+/* 10.6 Five Column With Gutter		 			 */
+/* ----------------------------------------------*/
+.five-col.with-gutter .grid-sizer{
+	width:18%;
+}
+
+.five-col.with-gutter .gutter-sizer{
+	width:2.5%;
+}
+
+.five-col.with-gutter .masonry-col{
+	margin-bottom:25px;
+}
+
+.five-col.with-gutter .masonry-col.w20{
+	width:18%;
+}
+
+.five-col.with-gutter .masonry-col.w40{
+	width:36%;
+}
+
+.five-col.with-gutter .masonry-col.w60{
+	width:54%;
+}
+
+.five-col.with-gutter .masonry-col.w80{
+	width:72%;
+}

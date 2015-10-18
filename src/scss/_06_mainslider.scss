@@ -1,0 +1,291 @@
+/*===============================================*/
+/* 06. MAIN-SLIDER					 		 	 */
+/*===============================================*/
+#main-slider {
+	margin:0; 
+	padding:0;
+	position:relative;
+}
+
+/* ----------------------------------------------*/
+/* 06.1 Main Slider Height					     */
+/* ----------------------------------------------*/
+/* #main-slider.fullscreen - script.js			 */
+
+#main-slider.fixed-height{
+	position:relative;
+	height:625px;
+}
+
+/* ----------------------------------------------*/
+/* 06.2 Main Slider Flexslider			  		 */
+/* ----------------------------------------------*/
+#main-slider.flexslider { 
+	border: none; 
+}
+
+#main-slider .slides,
+#main-slider.flexslider .slides li{
+	position:relative;
+	height:inherit;
+	width:100%;
+	overflow:hidden;
+}
+
+#main-slider.flexslider .flex-viewport{
+	position:relative;
+	height:inherit;
+}
+
+/* 06.2.1 Main Slider Flexslider Control Nav & Paging */
+/* ----------------------------------------------*/
+#main-slider .flex-control-nav, .flex-control-paging{
+	 background-color: transparent !important;
+	 margin:0; padding:0;
+	 position:absolute;
+	 bottom:0;
+	 z-index:4;
+}
+
+#main-slider.flexslider .flex-direction-nav .flex-prev { left: 0px; }
+#main-slider.flexslider .flex-direction-nav .flex-next { right: 0px; text-align: right; }
+#main-slider.flexslider:hover .flex-prev { opacity: 0.7; left: 100px; }
+#main-slider.flexslider:hover .flex-next { opacity: 0.7; right: 100px; }
+
+
+#main-slider .flex-direction-nav a {
+	z-index:4;
+}
+
+/* ----------------------------------------------*/
+/* 06.3 Main Slider Slide-Image		  		 	 */
+/* ----------------------------------------------*/
+
+#main-slider .slide-image {
+	position:relative;
+	height:inherit;
+	width:100%;
+	background-size:cover; 
+	background-position:50% 50%;
+	background-color:#FFF;
+	-webkit-transform: translateZ(0);
+	
+}
+
+/* ----------------------------------------------*/
+/* 06.4 Main Slider Slide-Video			  		 */
+/* ----------------------------------------------*/
+#main-slider .slide-video{
+	height: inherit; 
+	width:100%;
+	position:relative;	
+}
+
+/*#main-slider .slide-video-control{
+	height: 50px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 4;
+	padding-right:10px;
+	text-align:right;
+}*/
+
+/* ----------------------------------------------*/
+/* 06.5 Main Slider Title					     */
+/* ----------------------------------------------*/
+
+/* 06.5.1 Outter Wrapper */
+/* ----------------------------------------------*/
+.slide-title-outter-wrapper{
+	position:absolute; 
+	width:100%; 
+	height:inherit; 
+	left:0; 
+	z-index:3;
+	overflow:hidden;
+}
+
+/* 06.5.2 Inner Wrapper */
+/* ----------------------------------------------*/
+.slide-title-inner-wrapper{
+	width:1170px; 
+	height:inherit; 
+	margin:0 auto; 
+	display: table;
+}
+
+/* 06.5.3 Title Wrapper */
+/* ----------------------------------------------*/
+.slide-title{ 
+	display: table-cell;
+	text-align:center;	
+    color:#FFF;
+}
+
+.slide-title h1, .slide-title h2, .slide-title h3,
+.slide-title h4, .slide-title h5, .slide-title h6{
+	color:#FFF;
+}
+
+
+/* 06.5.4 Title Alignment */
+/* ----------------------------------------------*/
+.slide-title.align-middle{
+	vertical-align: middle;
+}
+.slide-title.align-top{
+	vertical-align: top;
+	/*padding-top:100px;*/
+}
+.slide-title.align-bottom{
+	vertical-align: bottom;
+	/*padding-bottom:0px;*/
+}
+
+/* 06.5.6 Save The Date Title */
+/* ----------------------------------------------*/
+#save-the-date{
+	font-family: $header-font-family;
+	-ms-transform: rotate(-10deg); /* IE 9 */
+    -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
+    transform: rotate(-10deg);
+	padding-top:100px;
+	padding-right:50px;
+	margin-bottom:20px;
+}
+
+#save{
+	font-size:75px; 
+	line-height:50px
+}
+
+#the-date{
+	font-size:62px;
+}
+
+#date{
+	font-size:47px; 
+	line-height:40px;
+}
+
+.pink-dot{
+	color: $color-main; 
+}
+
+/* ----------------------------------------------*/
+/* 06.6 Each Slide Overlay					     */
+/* ----------------------------------------------*/
+
+.slide-overlay{
+	position:absolute;
+	top:0;
+	display:block; 
+	width:inherit; 
+	height:inherit; 
+	background-color:#000; 
+	opacity:0.3;
+	-webkit-transform: translateZ(0);
+}
+
+/* ----------------------------------------------*/
+/* 06.7 Each Slide Caption					     */
+/* ----------------------------------------------*/
+.slide-caption{
+	position:absolute;
+	top:0;
+	display:block;
+	width:inherit; 
+	height:inherit; 
+	color:#fff;	
+}
+
+.use-animation{
+	visibility:hidden
+}
+
+/* ----------------------------------------------*/
+/* 06.8 Hack Flexslider Fade for Firefox & IE11	 */
+/* ----------------------------------------------*/
+.flexslider .slides.css-fade > li { 
+  	-webkit-transition: opacity 1s ease; 
+	-moz-transition: opacity 1s ease;
+ 	transition: opacity 1s ease; 
+}
+
+/* ----------------------------------------------*/
+/* 06.9 Loop Animation						     */
+/* ----------------------------------------------*/
+
+/* 06.9.1 Zoom									 */
+/* ----------------------------------------------*/
+@-webkit-keyframes zoom-in-out {
+   0% {-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+	50% {-webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    transform: scale(1.1);}
+	100%	{-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+}
+
+@keyframes zoom-in-out {
+    0% {-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+	50% {-webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    transform: scale(1.1);}
+	100%	{-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);}
+}
+
+.zoom.animate{
+	-webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);
+	-webkit-animation: zoom-in-out 30s; /* Chrome, Safari, Opera */
+    animation: zoom-in-out 30s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+
+/* 06.9.2 Left-Right							 */
+/* ----------------------------------------------*/
+@-webkit-keyframes move-left-right {
+   0% { background-position: 50% 50%; }
+    25% { background-position: 100% 50%; }
+	50% { background-position: 50% 50%; }
+	75%	{ background-position: 0% 50%; }
+	100%	{ background-position: 50% 50%; }
+}
+
+@keyframes move-left-right {
+    0% { background-position: 50% 50%; }
+    25% { background-position: 100% 50%; }
+	50% { background-position: 50% 50%; }
+	75%	{ background-position: 0% 50%; }
+	100%	{ background-position: 50% 50%; }
+}
+
+.left-right.animate{
+	background-position:50% 50%;
+	-webkit-animation: move-left-right 240s; /* Chrome, Safari, Opera */
+    animation: move-left-right 240s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+/* 06.10 Video Audio Control					 */
+/* ----------------------------------------------*/
+#main-slider .video-audio-control{
+	height: 50px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 4;
+	padding-right:10px;
+	text-align:right;
+	color:#FFF;
+}
+
+#main-slider .video-audio-control.mobile{
+	display:none;
+}

@@ -1,0 +1,150 @@
+/*===============================================*/
+/* 03. NAV MENU	 	 							 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 03.1 Parent Menu								 */
+/* ----------------------------------------------*/
+#nav-menu > li{
+	position:relative;
+	display:inline;	
+}
+
+#nav-menu > li:before{
+  	font-family: "fontello";
+  	font-style: normal;
+  	font-weight: normal;
+  	font-size:10px;
+  	line-height: 24px;
+  	vertical-align: middle;
+	content: '\e9bd';
+	color:$color-main;
+	text-align:center;
+}
+
+#nav-menu > li.first-child:before{
+	content: "";
+	margin-left: 0;
+}
+
+#nav-menu > li a{
+	display:inline-block;
+	padding:18px;
+	color:#666;
+	text-decoration:none;
+}
+
+#nav-menu > li a:hover{
+	color:$color-main;
+}
+
+/* 03.1.1 Transparent 							 */
+/* ----------------------------------------------*/
+.transparent #nav-menu > li a{
+	color:#FFF;
+}
+
+.transparent #nav-menu > li a:hover{
+	color:$color-main;
+}
+
+.transparent.stick-it #nav-menu > li a{
+	color:#666
+}
+
+/* 03.1.2 Additional Class For Nav Center 		 */
+/* ----------------------------------------------*/
+.first-child-margin{
+	margin-left:20px;
+}
+
+.last-child-margin{
+	margin-right:0px;
+}
+
+.split-margin{
+	margin-left:80px;
+}
+
+/* ----------------------------------------------*/
+/* 03.2 Child Menu								 */
+/* ----------------------------------------------*/
+#nav-menu ul{
+	position:absolute;
+	display:none;
+	width:200px;	
+	left:0;
+	list-style-type:none;
+	padding:0;
+	text-align:left;
+	border-top:solid 3px $color-main
+}
+
+#nav-menu li:hover > ul{
+	display:block;
+}
+
+#nav-menu ul li{
+	position:relative;
+	width:100%;
+}
+
+#nav-menu ul li a{
+	display:block;
+	width:100%;
+	background-color:#FFF;
+	border-bottom:solid thin #f4f2f2;
+}   
+
+#nav-menu ul li a:hover{
+	background-color:$color-main;
+	border:none;
+	color:#FFF;
+}
+
+/* 03.2.1 Reset Transparent Child Menu Color	 */
+/* ----------------------------------------------*/
+.transparent #nav-menu ul li a{
+	color:#666;
+}
+
+.transparent #nav-menu ul li a:hover{
+	color:#FFF;
+}
+
+/* 03.2.2 Child-Parent Arrow 					 */
+/* ----------------------------------------------*/
+#nav-menu li > ul li a:after { 
+	content: '>'; 
+	position:absolute;
+	right:15px;
+} 
+
+#nav-menu li > ul li a:only-child:after { 
+	content: ''; 
+}
+
+/* 03.2.3 More Child 						  	 */
+/* ----------------------------------------------*/
+#nav-menu ul ul{
+	top:0;
+	left:100%;
+	border:none;
+}
+
+
+/* ----------------------------------------------*/
+/* 03.3 Mobile Nav								 */
+/* ----------------------------------------------*/
+#mobile-nav{
+	display:none;
+}
+
+#mobile-nav,
+.transparent.stick-it #mobile-nav{
+	color:#666;
+}
+
+.transparent #mobile-nav{
+	color:#FFF;
+}

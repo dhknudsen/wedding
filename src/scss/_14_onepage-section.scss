@@ -1,0 +1,261 @@
+/*===============================================*/
+/* 14. ONEPAGE SECTION							 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 14.1 Slider Section							 */
+/* ----------------------------------------------*/
+#invited{
+	font-family: $header-font-family;
+	font-size:36px; 
+	margin-top:70px;
+}
+
+#banner-date{
+	font-family: $header-font-family;
+	letter-spacing:3px; 
+	font-size:14px;
+}
+
+/* ----------------------------------------------*/
+/* 14.2 Couple Section							 */
+/* ----------------------------------------------*/
+.his-her-name{
+	position:relative;
+}
+
+.his-her-name h2{
+	font-size:40px; 
+	margin-top:50px; 
+	margin-bottom:20px;
+}
+
+.his-her-name .last-name{
+	font-family: $header-font-family;
+	font-size:24px; 
+	display:block; 
+	margin-top:0;
+}
+
+.his-her-name .heart-wrapper{
+	position:absolute; 
+	right:-50px; 
+	top:0;
+}
+
+.his-her-name .custom-heart{
+	background-color:$color-main; 
+	width:65px; 
+	height:65px; 
+	line-height:65px;	
+	font-size:26px;
+}
+
+/* ----------------------------------------------*/
+/* 14.3 Our Story Section						 */
+/* ----------------------------------------------*/
+#our-story{
+	padding: 140px 0
+}
+
+.story-row.row {
+    display: table;
+	padding:50px 0;
+	position:relative;
+}
+
+.story-row.row [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.story-date-wrapper{
+	z-index:1;
+}
+
+.story-date{
+	float:left;
+	margin-left:16px;
+	height:85px; 
+	width:85px; 
+	background-color:$color-main; 
+	border-radius:50%;
+}
+
+.story-date .date-only{
+	font-family: $body-font-family;;
+	font-size:30px; 
+	color:#FFF; 
+	line-height:30px; 
+	margin-top:16px;
+}
+
+.story-date .month-year{
+	font-family: $body-font-family;;
+	font-size:16px; 
+	color:#FFF;
+}
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 13px solid transparent;
+	border-bottom: 13px solid transparent;
+	
+	border-left: 13px solid #e1dddd;
+	float:right;
+	margin-bottom:22px;
+	margin-left:10px;
+	margin-top:30px;
+}
+
+.arrow-left {
+	width: 0; 
+	height: 0; 
+	border-top: 13px solid transparent;
+	border-bottom: 13px solid transparent; 
+	
+	border-right:13px solid #e1dddd; 
+	float:left;
+	margin-bottom:22px;
+	margin-right:10px;
+	margin-top:30px;
+}
+
+.vertical-line{
+	position:absolute; 
+	height:100%; 
+	width:1px; 
+	margin:auto; 
+	top:0; 
+	bottom:0; 
+	left:0; 
+	right:0; 
+	border-left:1px solid #e1dddd;
+}
+
+#end-of-story{
+	margin-top:130px;
+}
+
+/* ----------------------------------------------*/
+/* 14.4 Where When Section						 */
+/* ----------------------------------------------*/
+#where-when{
+	padding: 120px 0
+}
+
+.and{
+	color:$color-main
+}
+
+.border-column{
+	border-left:1px solid #8b8b8b; 
+	border-right:1px solid #8b8b8b
+}
+
+#map-canvas{
+	height:560px; 
+	width:100%; 
+}
+
+/* ----------------------------------------------*/
+/* 14.5 Gallery Section							 */
+/* ----------------------------------------------*/
+#gallery-section{
+	padding: 140px 0
+}
+
+#gallery-section .photo-item{
+	margin-bottom:30px;
+}
+
+/* ----------------------------------------------*/
+/* 14.6 Don't Miss It / Countdown Section		 */
+/* ----------------------------------------------*/
+h2#dont-miss-it-title{
+	font-size:42px; 
+	margin-bottom:30px; 
+	font-family: 'Pacifico', cursive;
+}
+
+.circle-countdown{
+	width:100%; 
+	margin:0 auto; 
+	margin-top:25px
+}
+
+.circle-countdown.is-countdown {
+	background-color:transparent;
+	border:none;
+	font-family: $body-font-family;;
+}
+
+.circle-countdown .countdown-amount {
+	background-color:$color-main;
+	width:85px;
+	height:85px;
+	border-radius:50%;
+	display:block;
+	padding-top:22px;
+	font-size:30px;
+	margin:0 auto;
+}
+
+.circle-countdown .countdown-period {
+	padding:10px;
+	display:block;
+	text-align:center;
+	font-size:16px;
+	text-transform:uppercase;    
+}
+
+/* ----------------------------------------------*/
+/* 14.7 More Events Section						 */
+/* ----------------------------------------------*/
+#more-events{
+	padding: 140px 0
+}
+
+#events-carousel .item{
+	padding:20px;
+	margin-bottom:10px;
+}
+
+/* ----------------------------------------------*/
+/* 14.8 Groomsmen Section						 */
+/* ----------------------------------------------*/
+#groomsmen-section{
+	padding: 140px 0
+}
+
+.groomsmen-item{
+	margin-bottom:60px;
+}
+
+/* ----------------------------------------------*/
+/* 14.9 Bridesmaid Section						 */
+/* ----------------------------------------------*/
+#bridesmaid-section{
+	padding: 140px 0
+}
+
+.bridesmaid-item{
+	margin-bottom:60px;
+}
+
+/* ----------------------------------------------*/
+/* 14.10 Gift Section							 */
+/* ----------------------------------------------*/
+#gift-section{
+	padding: 140px 0; 
+	background-color:#FFF
+}
+
+/* ----------------------------------------------*/
+/* 14.11 RSVP Section							 */
+/* ----------------------------------------------*/
+#rsvp-section{
+	padding: 140px 0
+}

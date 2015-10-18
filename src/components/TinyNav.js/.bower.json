@@ -1,0 +1,25 @@
+{
+  "name": "TinyNav.js",
+  "main": "tinynav.js",
+  "homepage": "https://github.com/viljamis/TinyNav.js",
+  "authors": [
+    "@nicoandrade && @viljamis"
+  ],
+  "description": "Responsive navigation plugin that weighs just 443 bytes",
+  "keywords": [
+    "responsive",
+    "navigation",
+    "jquery"
+  ],
+  "license": "MIT",
+  "_release": "4258cb31e0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4258cb31e0650d63c587d2f6316ad9ebc110f05c"
+  },
+  "_source": "git://github.com/viljamis/TinyNav.js.git",
+  "_target": "*",
+  "_originalSource": "viljamis/TinyNav.js",
+  "_direct": true
+}

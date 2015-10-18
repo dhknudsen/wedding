@@ -1,0 +1,502 @@
+/*===============================================*/
+/* 07. PAGE										 */
+/*===============================================*/
+
+/* ----------------------------------------------*/
+/* 07.1	Page Layout								 */
+/* ----------------------------------------------*/
+#content{
+	position:relative;
+	background-color:#f6f6f6;
+}
+
+/* 07.1.1 Page Without Slider					 */
+/* ----------------------------------------------*/
+.no-slider-page #content{
+	padding:220px 0 120px 0;
+}
+
+/* 07.1.2 Page With Slider						 */
+/* ----------------------------------------------*/
+.slider-title-page #content{
+	padding:120px 0;
+}
+
+/* 07.1.3 Page With Banner						 */
+/* ----------------------------------------------*/
+.slider-banner-page #content{
+	padding:60px 0 120px 0;
+}
+
+/* 07.1.4 Page With Full Gallery				 */
+/* ----------------------------------------------*/
+.full-gallery-page #content{
+	padding:145px 0 120px 0;
+}
+
+/* 07.1.5 Page With Outside Bottom Bar 			 */
+/* ----------------------------------------------*/
+.outside-bottom-bar-page #content{
+	margin-top:145px;
+}
+
+/* 07.1.6 Page Sidebar				 			 */
+/* ----------------------------------------------*/
+.sidebar-wrapper{
+	width:100%; 
+	background-color:#FFF; 
+	padding:20px 30px
+}
+
+.sidebar-menu{
+	list-style-type:none;
+	padding:10px 0 0 0;	
+}
+
+.sidebar-menu li{
+	color:#6a6a6a;
+	display:block;
+	padding:10px 0;
+	border-bottom:1px solid #CCC;
+}
+
+.sidebar-menu li a{
+	color:#6a6a6a;
+}
+
+.sidebar-menu li a:hover{
+	color:$color-main;
+}
+
+.side-tab{
+	margin-bottom:60px;
+}
+
+
+/* ----------------------------------------------*/
+/* 07.2 PAGE ELEMENT	 	 					 */
+/* ----------------------------------------------*/
+
+/* 07.2.1 Page Title Wrapper					 */
+/* ----------------------------------------------*/
+.page-title{
+	padding-bottom:50px;
+}
+
+/* 07.2.2 Section Title Wrapper					 */
+/* ----------------------------------------------*/
+.section-title{
+	margin-bottom:70px;
+}
+
+.section-title h2{
+	font-size:40px; /*same size with h1*/
+}
+
+
+
+/* 07.2.3 Icon Title Wrapper					 */
+/* ----------------------------------------------*/
+.icon-title {
+	position:absolute; 
+	margin: auto; 
+	left:0; 
+	right:0;
+	top:-50px;
+}
+
+/* 07.2.4 Title-Excerpt White Box				 */
+/* ----------------------------------------------*/
+.title-excerpt{
+	position:relative;
+	background-color:#FFF; 
+	padding:25px;
+}
+
+.title-excerpt .custom-heart-icon{
+	position:absolute;
+	margin: auto; 
+	left:0; 
+	right:0; 
+	top:-12px;
+	color:$color-main !important; 
+	background-color:#e1dddd !important;
+}
+
+/* 07.2.5 Blurb Wrapper							 */
+/* ----------------------------------------------*/
+.blurb{
+	margin-top:20px;
+}
+
+/* 07.2.6  Align Middle Wrapper					 */
+/* ----------------------------------------------*/
+.alignment{
+	position:absolute;
+	display:table;
+	height:100%;
+	width:100%;
+}
+
+.v-align{
+	display:table-cell;	
+}
+
+.center-middle{
+	vertical-align:middle;
+	text-align:center;
+}
+
+.center-top{
+	vertical-align:top;
+	text-align:center;
+}
+
+.center-bottom{
+	vertical-align:bottom;
+	text-align:center;
+}
+
+/* 07.2.7 IMAGE & VIDEO DIVIDER					 */
+/* ----------------------------------------------*/
+.divider-wrapper{
+	padding:130px 0;
+}
+
+.image-divider {
+	position:relative;
+	background-size:cover;
+	-webkit-background-size:cover;
+	background-attachment: scroll;
+	background-position:center center;
+	background-repeat:no-repeat;
+	color:#FFF;
+}
+
+.image-divider.mobile{
+	background-attachment:scroll;
+}
+
+.video-divider {
+	position:relative;
+	color:#FFF;
+	z-index:3;
+}
+
+.image-divider h1, .image-divider h2,
+.image-divider h3, .image-divider h4,
+.image-divider h5, .image-divider h6,
+.video-divider h1, .video-divider h2,
+.video-divider h3, .video-divider h4,
+.video-divider h5, .video-divider h6 {
+	color:#FFF;
+}
+
+
+.image-divider .divider-overlay,
+.video-divider .divider-overlay{
+	position:absolute; 
+	top:0; 
+	display:block; 
+	width:100%; 
+	height:100%; 
+	background-color:#000; 
+	opacity:0.3
+}
+
+.image-divider.auto-height,
+.video-divider.auto-height {
+	height:100%;
+	width:100%;
+	padding:150px 0;
+}
+
+.image-divider.fixed-height,
+.video-divider.fixed-height {
+	height:700px;
+	width:100%;
+	padding:0;
+}
+
+/* 07.2.8 SPACE AND LINE DIVIDER 				 */
+/* ----------------------------------------------*/
+.space-divider{
+	display:block;
+	height:150px
+}
+
+
+hr.line-divider{
+	height:2px;
+	border:none;
+	color:#e1dddd;
+	background-color:#e1dddd; 
+	margin:50px 0
+}
+
+/* 07.2.9 HEART DIVIDER							 */
+/* ----------------------------------------------*/
+
+.heart-divider{
+	height:100%; 
+	width:100%;
+	margin:0 auto; 
+	margin-top:20px;
+	margin-bottom:20px;
+	text-align:center;
+}
+
+.white-line{
+	width:30px; 
+	height:8px;
+	display:inline-block;
+	border-top:solid 1px #FFF;
+}
+
+.grey-line{
+	width:30px; 
+	height:8px;
+	display:inline-block;
+	border-top:solid 2px #e1dddd;
+}
+
+/*.left-line{
+	color:#FFF; 
+	letter-spacing:-2px; 
+	float:left; 
+	margin-right:10px
+}
+
+.right-line{
+	color:#FFF; 
+	letter-spacing:-2px; 
+	float:left;
+	margin-left:10px
+}
+
+.two-heart{
+	float:left;
+}*/
+
+.pink-heart{
+	color:$color-main; 
+	font-size:18px; 
+	position:relative; 
+	z-index:3
+}
+
+.white-heart{
+	color:#FFF; 
+	font-size:18px; 
+	margin-left:-15px; 
+	position:relative;
+	z-index:2
+}
+
+.grey-heart{
+	color: #e1dddd;
+	font-size:18px; 
+	margin-left:-15px; 
+	position:relative;
+	z-index:2
+}
+
+
+/* 07.2.10 BUTTON					 			 */
+/* ----------------------------------------------*/
+a.de-button, span.de-button, input[type=submit]{
+	display:inline-block; 	
+	margin:0 auto; 
+	margin-top:20px; 
+	background-color:#FFF; 
+	font-family: 'Oswald', sans-serif; 	
+	border:solid 1px #6a6a6a
+}
+
+a.de-button.outline, span.de-button.outline, input[type=submit].outline{
+	background-color:transparent; 
+	border:solid 1px #FFF;
+	color:#FFF;
+}
+
+a.de-button.reverse, span.de-button.reverse, input[type=submit].reverse{
+	background-color:$color-main; 
+	border:solid 1px $color-main;
+	color:#FFF;
+}
+
+a.de-button.small, span.de-button.small, input[type=submit].small{
+	padding:8px 26px; 
+	font-size:14px; 
+}
+
+a.de-button.medium, span.de-button.medium, input[type=submit].medium{
+	padding:10px 50px; 
+	font-size:16px; 
+}
+
+a.de-button.large, span.de-button.large, input[type=submit].large{
+	padding:14px 70px; 
+	font-size:20px; 
+}
+
+a.de-button:hover, input[type=submit]:hover{
+	background-color:$color-main;
+	border-color:$color-main;
+	color:#FFF;
+	text-decoration:none;
+}
+
+a.de-button.reverse:hover, input[type=submit].reverse:hover{
+	background-color:#FFF;
+	border-color:#FFF;
+	color:#6a6a6a;
+	text-decoration:none;
+	border:solid 1px #6a6a6a
+}
+
+/* 07.2.11 Banner Text				 			 */
+/* ----------------------------------------------*/
+.banner-text{
+	display:inline-block;
+	font-family: 'Oswald', sans-serif; 
+	margin:auto;
+	margin-top:30px;
+	margin-bottom:30px; 	
+	text-align:center
+}
+
+.banner-text.small{
+	padding:2px 30px;  
+}
+
+.banner-text.medium{
+	padding:2px 50px;  
+}
+
+.banner-text.large{
+	padding:2px 70px;  
+}
+
+.banner-text.full{
+	width:100%;
+}
+
+.banner-text.light{
+	color:#FFF;
+	border-top:medium double #fff; 
+	border-bottom:medium double #fff;
+}
+
+.banner-text.light *{
+	color:#FFF;
+}
+
+.banner-text.dark{
+	color:#6a6a6a;
+	border-top:medium double #6a6a6a; 
+	border-bottom:medium double #6a6a6a; 	
+}
+
+.banner-text.dark *{
+	color:#333333;
+}
+
+.banner-text.withlove{
+	position:relative;
+	display:inline-block;
+	font-family: 'Oswald', sans-serif;  
+	margin:auto;
+	margin-top:30px;
+	margin-bottom:30px;
+	text-align:center
+}
+
+.banner-text.withlove:before{
+	display:block;
+	font-family: "fontello";
+	position:absolute;
+	font-size:22px;
+	color:#FFF;
+	content:"\e806";
+	top:-17px;
+	left:0;
+	right:0;
+	margin-left:19px;
+}
+
+.banner-text.withlove.dark:before{
+	color:#e1dddd;
+}
+
+.banner-text.withlove:after{
+	display:block;
+	font-family: "fontello";
+	position:absolute;
+	font-size:22px;
+	color:$color-main;
+	content:"\e806";
+	top:-17px;
+	left:0;
+	right:0	;
+	margin-right:19px;
+}
+
+
+/* 07.2.12 White Box Content Wrapper 			 */
+/* ----------------------------------------------*/
+.white-box-content-wrapper{
+	background-color:#FFF; 
+	padding:40px 40px;
+	margin-bottom:30px;
+}
+
+/*-----------------------------------------------*/
+/* 07.2.13 Popup Template						 */
+/*-----------------------------------------------*/
+#popup-template{
+	width:900px;
+	margin:30px auto; 
+	background-color:#FFF;
+}
+
+#popup-template #main-image{
+	height:485px;
+	width:100%;
+	position:relative;
+}
+
+#popup-template-title-wrapper{
+	position:absolute; 
+	bottom:0; 
+	color:#FFF; 
+	text-align:center; 
+	padding:0 50px;
+	margin:0 auto;
+	width:100%;
+}
+
+#popup-template #the-content{
+	padding:35px 75px;
+}
+
+#popup-template #the-content #socialnetwork-icon{
+	text-align:center; 
+	margin-bottom:20px;
+}
+
+#popup-template #the-content img{
+	width:100%;
+	margin:10px 0
+}
+
+/*-----------------------------------------------*/
+/* 07.2.14 Autocrop Image						 */
+/*-----------------------------------------------*/
+.autocrop-image{
+ 	display:block;
+	background-position:center center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	overflow:hidden;
+}

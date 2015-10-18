@@ -1,0 +1,51 @@
+/*===============================================*/
+/* 15. PLUGIN CUSTOM							 */
+/*===============================================*/
+ 
+/* -------------------------------------------*/
+/* 15.1 Owl Carousel 						  */
+/* -------------------------------------------*/
+.owl-carousel .item{
+	padding:0 15px
+}
+
+.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 8px;
+	height: 8px;
+	margin: 5px 7px;
+	opacity: 1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background: #333333;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	background: $color-main;
+}
+
+/* -------------------------------------------*/
+/* 15.2 MAGNIFIC POPUP 						  */
+/* -------------------------------------------*/
+.mfp-bg{
+	z-index:2000;
+	-webkit-transform: translateZ(0);
+}
+
+.mfp-wrap {
+  	z-index: 2001;
+}
+
+.mfp-content {
+  	z-index: 2003;
+}
+  
+.mfp-preloader {
+  	z-index: 2002; 
+}
+
+button.mfp-close, button.mfp-arrow {
+  	z-index: 2003;
+}
