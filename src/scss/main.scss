@@ -1,0 +1,34 @@
+@import '../../vendor/bootstrap-sass/assets/stylesheets/bootstrap';
+@import "variables";
+@import "mixins";
+
+/* Theme styling */
+
+@import "00_variables";
+@import "preloader/preloader";
+@import "01_general"; 
+@import "02_navbar";
+@import "03_navmenu";
+@import "04_side-navbar";
+@import "05_logo";
+@import "06_mainslider";
+@import "07_page";
+@import "08_icon";    
+@import "09_photo-item";
+@import "10_masonry"; 
+@import "11_form";  
+@import "12_home-page";
+@import "13_other-page";
+@import "14_onepage-section";
+@import "15_plugins"; 
+@import "16_media-screen";    
+@import "17_animation";    
+
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using.
+ *
+ * TODO: In a later version of this boilerplate, I'd like to automate this.
+ */
+
+@import '../app/home/home.scss';

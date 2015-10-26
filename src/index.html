@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="dhWedding" ng-controller="AppCtrl">
+<head>
+  <title ng-bind="pageTitle"></title>
+
+  <!-- social media tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@danielhknudsen">
+  <meta name="twitter:title" content="Mathilde & Daniel - Juli 2016">
+  <meta name="twitter:description" content="Vi skal giftes!!! Juli 2016 :)">
+  <meta name="twitter:creator" content="@danielhknudsen">
+  <meta name="twitter:image:src" content="">
+  <meta property="og:title" content="Mathilde og Daniel - Juli 2016" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://mathildeogdaniel.dk" />
+  <meta property="og:image" content="" />
+  <meta property="og:description" content="Vi skal giftes!!! Juli 2016">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- font awesome from BootstrapCDN -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- inject:css -->
+  <!-- endinject -->
+
+  <!-- inject:js -->
+  <!-- endinject -->
+
+</head>
+
+<body class="outside-bottom-bar-page">
+  <div style="height:0; overflow: hidden;">
+    <!-- inject:svg --><!-- endinject -->
+  </div>
+
+  <!-- MAIN SLIDER -->
+  <section id="main-slider" class="flexslider fullscreen" ng-style="{ 'height': viewport.height }">        
+    <!-- MAIN SLIDER TITLE OUTTER WRAPPER -->
+    <div class="slide-title-outter-wrapper">
+      <!-- MAIN SLIDER TITLE INNER WRAPPER -->
+      <div class="slide-title-inner-wrapper">
+        <!-- TITLE 2 -->
+        <div class="slide-title align-middle">          
+          <div class="container">
+            <div class="row">
+              <div ng-hide="loggedIn" class="col-md-offset-3 col-md-6 animation delay1 animated fadeInUp">
+                <div class="banner-text withlove medium light">
+                  <h1>Vi skal giftes</h1>
+                </div>                                       
+                <div id="banner-date">
+                  - 9 / Juli / 2016 -
+                </div>
+              </div> 
+            </div>
+          </div>        
+        </div>               
+      </div><!-- END of MAIN SLIDER TITLE INNER WRAPPER -->
+    </div> <!-- END of MAIN SLIDER TITLE OUTTER WRAPPER -->
+    
+    <!-- MAIN SLIDER IMAGES -->
+    <ul class="slides">
+      <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2">
+        <!-- SLIDE IMAGE -->
+        <div parallax-background parallax-ratio="0.5" class="slide-image" style="background-image: url('/assets/images/mogd.jpg'); background-position:top center">
+        </div>
+      </li>
+    </ul>
+    
+  </section> <!-- ENF of MAIN SLIDER -->
+
+  <div ng-include="'navigation/navigation.tpl.html'"></div>
+
+  <div ui-view="main">
+  </div>
+</body>
+
+</html>

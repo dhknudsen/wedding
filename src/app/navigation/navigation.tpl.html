@@ -1,0 +1,4 @@
+<header id="nav-header">
+  <div ng-hide="loggedIn" ng-include="'navigation/nav.login.tpl.html'"></div>
+  <div ng-show="loggedIn" ng-include="'navigation/nav.loggedin.tpl.html'"></div>    
+</header>
