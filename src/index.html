@@ -32,6 +32,11 @@
 </head>
 
 <body class="outside-bottom-bar-page">
+  
+  <div class="alerts-container">
+    <uib-alert class="" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+  </div>
+
   <div style="height:0; overflow: hidden;">
     <!-- inject:svg --><!-- endinject -->
   </div>

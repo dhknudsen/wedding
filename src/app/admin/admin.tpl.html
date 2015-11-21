@@ -1,4 +1,19 @@
 <div>
-  This is only for admins, Man!!
+	<section id="content">
+		<div class="container">
+		  <button class="btn" ng-click="admin.createNew()">Tilføj</button>
+		  <table class="table">
+		  	<thead>
+		  		<tr>
+		  			<th>Name</th>
+		  		</tr>
+		  	</thead>
+		  	<tbody>
+		  		<tr ng-repeat="user in admin.users">
+		  			<td>{{ user.profile.name }}</td>
+		  		</tr>
+		  	</tbody>
+		  </table>
+		</div>
+	</section>
 </div>
-

@@ -65,6 +65,7 @@ module.exports = {
 	 */
 	vendor_files: {
 		js: [
+			'vendor/lodash/lodash.js',
 			'vendor/jquery/dist/jquery.js',
 			'vendor/flexslider/jquery.flexslider.js',
 			'vendor/angular/angular.js',

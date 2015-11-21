@@ -1,0 +1,74 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Opret ny invitation</h3>
+    </div>
+    <div class="modal-body">
+        <form name="modalForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="uName">Login title (Par/Familie titel)</label>
+                <input type="text" class="form-control" required id="uName" ng-model="profile.name" placeholder="Invitationstitel">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="uEmail">Brugernavn</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" required ng-model="profile.email" id="uEmail" placeholder="brugernavn">
+                  <div class="input-group-addon">{{ modal.emailpostfix }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="uPass">Adgangskode</label>
+                <input type="text" class="form-control" required ng-model="profile.pass" id="uPass" placeholder="adgangskode">
+              </div>  
+            </div>
+          </div>
+          <div class="row">
+            <div class="well">
+              <ul class="list-inline row">
+                <li ng-repeat="person in people" class="col-sm-4">
+                  <div class="panel">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label for="person-name-{{$index}}">Navn</label>
+                        <input type="text" class="form-control" id="person-name-{{$index}}" required ng-model="person.name" placeholder="Navn">
+                      </div>
+                      <div class="form-group">
+                        <label for="person-desc-{{$index}}">Beskrivelse</label>
+                        <textarea class="form-control" id="person-desc-{{$index}}" ng-model="person.desc"></textarea>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="person.public"> Gør Profil offentlig
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label for="person-status-{{$index}}">RSVP status</label>
+                        <select class="form-control" ng-model="person.status" ng-options="option.value as option.label for option in modal.statusOptions" id=""></select>
+                      </div> 
+                    </div>
+                  </div>
+                </li>
+                <li class="col-sm-4">
+                  <div class="panel panel-warning">
+                    <div class="panel-body text-center">
+                      <a ng-click="modal.addPerson()">Tilføj person</a>    
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-disabled="modalForm.$invalid || modal.isEmpty(people)" ng-click="modal.create()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="modal.cancel()">Cancel</button>
+    </div>
+</div>

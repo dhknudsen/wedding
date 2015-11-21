@@ -1,45 +1,74 @@
-/**
- * Each section of the site has its own module. It probably also has
- * submodules, though this boilerplate is too simple to demonstrate it. Within
- * `src/app/home`, however, could exist several additional folders representing
- * additional modules that would then be listed as dependencies of this one.
- * For example, a `note` section could have the submodules `note.create`,
- * `note.delete`, `note.edit`, etc.
- *
- * Regardless, so long as dependencies are managed correctly, the build process
- * will automatically take take of the rest.
- *
- * The dependencies block here is also where component dependencies should be
- * specified, as shown below.
- */
-angular.module( 'dhWedding.admin', [
-  'ui.router',
-  'dhWedding.roles'
+angular.module( "dhWedding.admin", [
+  "ui.bootstrap",
+  "ui.router",
+  "dhWedding.roles"
 ])
 
-/**
- * Each section or module of the site can also have its own routes. AngularJS
- * will handle ensuring they are all available at run-time, but splitting it
- * this way makes each module more "self-contained".
- */
-.config(function config( $stateProvider, rolesProviderProvider) {
+.config(function config( $stateProvider, rolesProviderProvider ) {
   var Roles = rolesProviderProvider.$get();
-  $stateProvider.stateAuthenticated( 'admin', {
-    url: '/admin',
+  $stateProvider.stateAuthenticated( "admin", {
+    url: "/admin",
     views: {
       "main": {
-        controller: 'AdminCtrl',
-        templateUrl: 'admin/admin.tpl.html'
+        controller: "AdminCtrl",
+        templateUrl: "admin/admin.tpl.html"
       }
     },
-    data:{ pageTitle: 'Admin' }
-  }, Roles.accessLevels.admin);
+    data:{ pageTitle: "Admin" }
+  }, Roles.accessLevels.admin );
 })
 
-/**
- * And of course we define a controller for our route.
- */
-.controller( 'AdminCtrl', function AdminController( $scope ) {
+.controller( "AdminCtrl", function AdminController( $scope, $rootScope, Auth, $firebaseObject, fbutil, $uibModal ) {
+
+  var users = $firebaseObject( fbutil.ref( "users" ) );
+  var admin = {};
+
+  users.$loaded(function( data ) {
+    admin.users = users;
+    console.log( users );
+    admin.createNew = function() {
+
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: "admin/create/create-modal.tpl.html",
+        controller: "CreateModalCtrl",
+        size: "lg",
+        resolve: {
+        }
+      });
+
+      modalInstance.result.then(function( newUser ) {
+        console.log("newUser: ", newUser );
+
+        // create user credentials in Firebase auth system
+        Auth.$createUser({ email: newUser.profile.email, password: newUser.profile.pass })
+        .then(function( authData ) {
+          console.log( "user created" );
+          //store additional user data on new user instance
+          createProfile( authData, newUser );
+        });
+      });
+  };
+
+  });
+
+  $scope.admin = admin;
+
+  function createProfile( authData, newUser ) {
+
+    console.log("let's create a new user");
+    console.log("authData: ", authData );
+    console.log("newUser: ", newUser );
+
+    delete newUser.profile.pass;
+
+    users[ authData.uid ] = newUser;
+
+    users.$save().then(function(ref) {
+      console.log('user saved');
+    });
+  }
+
 })
 
 ;
