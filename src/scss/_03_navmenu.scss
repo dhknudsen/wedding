@@ -7,7 +7,8 @@
 /* ----------------------------------------------*/
 #nav-menu > li{
 	position:relative;
-	display:inline;	
+	display:inline;
+
 }
 
 #nav-menu > li:before{
@@ -72,7 +73,7 @@
 #nav-menu ul{
 	position:absolute;
 	display:none;
-	width:200px;	
+	width:200px;
 	left:0;
 	list-style-type:none;
 	padding:0;
@@ -94,7 +95,7 @@
 	width:100%;
 	background-color:#FFF;
 	border-bottom:solid thin #f4f2f2;
-}   
+}
 
 #nav-menu ul li a:hover{
 	background-color:$color-main;
@@ -114,14 +115,14 @@
 
 /* 03.2.2 Child-Parent Arrow 					 */
 /* ----------------------------------------------*/
-#nav-menu li > ul li a:after { 
-	content: '>'; 
+#nav-menu li > ul li a:after {
+	content: '>';
 	position:absolute;
 	right:15px;
-} 
+}
 
-#nav-menu li > ul li a:only-child:after { 
-	content: ''; 
+#nav-menu li > ul li a:only-child:after {
+	content: '';
 }
 
 /* 03.2.3 More Child 						  	 */

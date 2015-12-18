@@ -1,25 +1,14 @@
+/**
+ * Tests sit right alongside the file they are testing, which is more intuitive
+ * and portable than separating `src` and `test` directories. Additionally, the
+ * build process will exclude all `.spec.js` files from the build
+ * automatically.
+ */
+describe( 'login section', function() {
+  beforeEach( module( 'dhWedding.login' ) );
 
-describe('dhWedding.login', function() {
-  beforeEach(function() {
-    module('dhWedding');
-    module('dhWedding.login');
-  });
-
-  describe('LoginCtrl', function() {
-    var loginCtrl, $scope;
-    beforeEach(function() {
-      inject(function($controller) {
-        $scope = {};
-        loginCtrl = $controller('LoginCtrl', {$scope: $scope});
-      });
-    });
-
-    it('should define login function', function() {
-      expect(typeof $scope.login).toBe('function');
-    });
-
-    it('should define createAccount function', function() {
-      expect(typeof $scope.createAccount).toBe('function');
-    });
-  });
+  it( 'should have a dummy test', inject( function() {
+    expect( true ).toBeTruthy();
+  }));
 });
+

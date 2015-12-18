@@ -1,86 +1,96 @@
+(function() {
+  angular
+    .module( 'dhWedding.account' )
+    .controller( 'Account', Account );
 
-angular.module('dhWedding.account', [
-  'firebase', 
-  'firebase.utils', 
-  'firebase.auth', 
-  'ui.router'
-])
+  Account.$inject = [ '$scope', 'Auth', 'fbutil', 'user', '$state', 'loginRedirectState', '$firebaseObject'];
 
-.config(function config ( $stateProvider ) {
-  // require user to be authenticated before they can access this page
-  // this is handled by the .stateAuthenticated method declared in
-  // components/router/router.js
-  $stateProvider.stateAuthenticated('account', {
-    url: '/account',
-    views: {
-      "main" : {
-        templateUrl: 'account/account.tpl.html',
-        controller: 'AccountCtrl'    
-      }
-    },
-    data:{ pageTitle: 'Account' }
-  })
-})
+  function Account( $scope, Auth, fbutil, user, $state, loginRedirectState, $firebaseObject ) {
 
-.controller('AccountCtrl', function AccountController( $scope, Auth, fbutil, user, $state, loginRedirectState, $firebaseObject) {
-  var unbind;
-  // create a 3-way binding with the user profile object in Firebase
-  var profile = $firebaseObject(fbutil.ref('users', user.uid));
-  profile.$bindTo($scope, 'profile').then(function(ub) { unbind = ub; });
+    var unbind;
+    var vm            = this;
+    var emailpostfix  = '@mogd.dk';
+    var profile       = $firebaseObject( fbutil.ref( 'users', user.uid ) );
 
-  console.log('user: ', user);
+    //Bindable values
+    vm.err            = null;
+    vm.msg            = null;
+    vm.emailerr       = null;
+    vm.emailmsg       = null;
 
-  // expose logout function to scope
-  $scope.logout = function() {
-    if( unbind ) { unbind(); }
-    profile.$destroy();
-    Auth.$unauth();
-    $state.go(loginRedirectState);
-  };
+    //Bindable functions
+    vm.clear          = resetMessages;
+    vm.logout         = logout;
+    vm.changeEmail    = changeEmail;
+    vm.changePassword = changePassword;
 
-  $scope.changePassword = function(pass, confirm, newPass) {
-    resetMessages();
-    if( !pass || !confirm || !newPass ) {
-      $scope.err = 'Please fill in all password fields';
-    }
-    else if( newPass !== confirm ) {
-      $scope.err = 'New pass and confirm do not match';
-    }
-    else {
-      Auth.$changePassword({email: profile.email, oldPassword: pass, newPassword: newPass})
-        .then(function() {
-          $scope.msg = 'Password changed';
-        }, function(err) {
-          $scope.err = err;
-        })
-    }
-  };
+    //
+    profile.$bindTo( vm, 'vm.user' ).then( function( ub ) {
+      unbind = ub;
+    });
 
-  $scope.clear = resetMessages;
+    function changeEmail( pass, newEmail ) {
 
-  $scope.changeEmail = function(pass, newEmail) {
-    resetMessages();
-    var oldEmail = profile.email;
-    Auth.$changeEmail({oldEmail: oldEmail, newEmail: newEmail, password: pass})
-      .then(function() {
-        // store the new email address in the user's profile
-        return fbutil.handler(function(done) {
-          fbutil.ref('users', user.uid, 'email').set(newEmail, done);
+      resetMessages();
+
+      var settings = {
+        oldEmail : vm.user.profile.email,
+        newEmail : ( newEmail.indexOf( '@' ) === -1 ) ? newEmail + emailpostfix : newEmail,
+        password : pass
+      };
+
+      Auth.$changeEmail( settings )
+        .then( setNewEmail )
+        .then( promptChange, promptError );
+
+      function setNewEmail() {
+        var ref = fbutil.ref( 'users', vm.user.$id, 'profile', 'email' );
+
+        return fbutil.handler(function( cb ) {
+          ref.set( newEmail, cb );
         });
-      })
-      .then(function() {
-        $scope.emailmsg = 'Email changed';
-      }, function(err) {
-        $scope.emailerr = err;
+      }
+
+      function promptChange() {
+        vm.emailmsg = 'Email changed';
+      }
+
+      function promptError( err ) {
+        vm.emailerr = err;
+      }
+    }
+
+    function changePassword( pass, confirm, newPass ) {
+      resetMessages();
+
+      if ( !pass || !confirm || !newPass ) {
+        vm.err = 'Please fill in all password fields';
+      } else if ( newPass !== confirm ) {
+        vm.err = 'New pass and confirm do not match';
+      } else {
+        Auth.$changePassword({ email: vm.user.profile.email, oldPassword: pass, newPassword: newPass })
+          .then(function() {
+            vm.msg = 'Password changed';
+          }, function( err ) {
+            vm.err = err;
+          });
+      }
+    }
+
+    function logout() {
+      if ( unbind ) unbind();
+
+      profile.$destroy();
+      Auth.$unauth();
+      $state.go( loginRedirectState );
+    }
+
+    function resetMessages() {
+      [ vm.err, vm.msg, vm.emailerr, vm.emailmsg ].forEach(function( item ) {
+        item = null;
       });
-  };
-
-  function resetMessages() {
-    $scope.err = null;
-    $scope.msg = null;
-    $scope.emailerr = null;
-    $scope.emailmsg = null;
+    }
   }
-})
 
-;
+})();
+

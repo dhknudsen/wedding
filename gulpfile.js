@@ -1,32 +1,34 @@
-var gulp                  	= require('gulp'),
-	concat                	= require('gulp-concat'),
-	uglify                	= require('gulp-uglify'),
-	less                  	= require('gulp-less'),
-	rename                	= require('gulp-rename'),
-	del                   	= require('del'),
-	livereload            	= require('gulp-livereload'),
-	inject                	= require("gulp-inject"),
-	html2js               	= require('gulp-html2js'),
-	jshint                	= require('gulp-jshint'),
-	stylish               	= require('jshint-stylish'),
-	debug                 	= require('gulp-debug'),
-	svgstore              	= require('gulp-svgstore'),
-	merge                 	= require('merge-stream'),
-	watch                 	= require('gulp-watch'),
-	changed               	= require('gulp-changed'),
-	header                	= require('gulp-header'),
-	fs                    	= require('fs'),
-	conventionalChangelog 	= require('conventional-changelog'),
-	bump                  	= require('gulp-bump'),
-	ngAnnotate            	= require('gulp-ng-annotate'),
-	config                	= require('./build.config.js'),
-	pkg                   	= require('./package.json'),
-	streamqueue  		  	= require('streamqueue'),
-	sass 				  	= require('gulp-ruby-sass'),
-	gutil 					= require('gulp-util'),
-	http 					= require('http'),
-	ecstatic		 		= require('ecstatic')
-	;
+var gulp                = require('gulp'),
+
+  bump                  = require('gulp-bump'),
+  changed               = require('gulp-changed'),
+  concat                = require('gulp-concat'),
+  config                = require('./build.config.js'),
+  conventionalChangelog = require('conventional-changelog'),
+  debug                 = require('gulp-debug'),
+  del                   = require('del'),
+  ecstatic              = require('ecstatic'),
+  fs                    = require('fs'),
+  gutil                 = require('gulp-util'),
+  header                = require('gulp-header'),
+  html2js               = require('gulp-html2js'),
+  http                  = require('http'),
+  inject                = require("gulp-inject"),
+  jshint                = require('gulp-jshint'),
+  less                  = require('gulp-less'),
+  livereload            = require('gulp-livereload'),
+  merge                 = require('merge-stream'),
+  ngAnnotate            = require('gulp-ng-annotate'),
+  pkg                   = require('./package.json'),
+  rename                = require('gulp-rename'),
+  sass                  = require('gulp-ruby-sass'),
+  series                = require('stream-series');
+  streamqueue           = require('streamqueue'),
+  stylish               = require('jshint-stylish'),
+  svgstore              = require('gulp-svgstore'),
+  uglify                = require('gulp-uglify'),
+  watch                 = require('gulp-watch')
+;
 
 gulp.task('sass', function () {
 	return gulp.src(config.app_files.scss)
@@ -44,7 +46,11 @@ gulp.task('copy', function() {
 			.pipe(changed(config.build_dir + '/assets'))
 			.pipe(gulp.dest(config.build_dir + '/assets')),
 
-		gulp.src(config.app_files.js)
+		gulp.src(config.app_files.jsmodules)
+      .pipe(changed(config.build_dir + '/src'))
+      .pipe(gulp.dest(config.build_dir + '/src')),
+
+    gulp.src(config.app_files.js)
 			.pipe(changed(config.build_dir + '/src'))
 			.pipe(gulp.dest(config.build_dir + '/src')),
 
@@ -60,13 +66,13 @@ gulp.task('copy', function() {
 gulp.task('injectify', ['prod'], function () {
 
 	var target = gulp.src('./build/index.html'),
-		files = [].concat(
-			config.vendor_files.css,
-				'assets/' + pkg.name + '-' + pkg.version + '.app.css',
-			'js/app.js',
-			'templates-app.js'
-		),
-		sources = gulp.src(files, {read: false, cwd: config.prod_dir});
+		  files = [].concat(
+  			config.vendor_files.css,
+  			'assets/' + pkg.name + '-' + pkg.version + '.app.css',
+  			'js/app.js',
+  			'templates-app.js'
+  		),
+  		sources = gulp.src(files, {read: false, cwd: config.prod_dir});
 
 	return target.pipe(inject(sources))
 		.pipe(gulp.dest(config.prod_dir));
@@ -135,7 +141,7 @@ gulp.task('jshint', function() {
 		globalstrict: true
 	};
 
-	return gulp.src(config.app_files.js)
+	return gulp.src([ config.app_files.js, config.app_files.jsmodules ] )
 		.pipe(jshint(options))
 		.pipe(jshint.reporter(stylish))
 		.pipe(jshint.reporter('fail'));
@@ -158,19 +164,22 @@ gulp.task('html2js', function() {
 
 var indexTask = function() {
 	var target = gulp.src('src/index.html'),
+  		vendor_files = [].concat(
+        config.vendor_files.js,
+        config.vendor_files.css
+      ),
+      app_files  = [].concat(
+  			config.app_files.js,
+  			'templates-common.js',
+  			'templates-app.js',
+  			'assets/' + pkg.name + '-' + pkg.version + '.css'
+  		),
+  		vendorStream  = gulp.src(vendor_files, {read: false, cwd: config.build_dir, addRootSlash: false}),
+      modulesStream = gulp.src(config.app_files.jsmodules, {read: false, cwd: config.build_dir, addRootSlash: false}),
+      appStream     = gulp.src(app_files, {read: false, cwd: config.build_dir, addRootSlash: false});
 
-		files = [].concat(
-			config.vendor_files.js,
-			'src/**/*.js',
-			config.vendor_files.css,
-			'templates-common.js',
-			'templates-app.js',
-				'assets/' + pkg.name + '-' + pkg.version + '.css'
-		),
-
-		sources = gulp.src(files, {read: false, cwd: config.build_dir, addRootSlash: false});
-
-	return target.pipe(inject(sources))
+	return target
+    .pipe(inject(series(vendorStream, modulesStream, appStream)))
 		.pipe(gulp.dest(config.build_dir));
 };
 

@@ -21,8 +21,10 @@ module.exports = {
 	 * app's unit tests.
 	 */
 	app_files: {
-		js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
+
+    js: [ 'src/**/*.js', '!src/**/*.module.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
 		jsunit: [ 'src/**/*.spec.js' ],
+    jsmodules: [ 'src/**/*.module.js' ],
 
 		coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
 		coffeeunit: [ 'src/**/*.spec.coffee' ],
@@ -69,7 +71,8 @@ module.exports = {
 			'vendor/jquery/dist/jquery.js',
 			'vendor/flexslider/jquery.flexslider.js',
 			'vendor/angular/angular.js',
-			'vendor/angular-flexslider/angular-flexslider.js',
+			'vendor/angular-animate/angular-animate.js',
+      'vendor/angular-flexslider/angular-flexslider.js',
 			'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
 			'vendor/firebase/firebase.js',
 			'vendor/angularfire/dist/angularfire.js',
@@ -80,13 +83,17 @@ module.exports = {
 			'vendor/angular-animate/angular-animate.min.js',
 			'vendor/angular-route/angular-route.min.js',
 			'vendor/angular-localStorageService/src/storageprovider.js',
-			'vendor/angular-flash-messages/angular-flash.js',
+      'vendor/angular-toastr/dist/angular-toastr.tpls.js',
 			'vendor/angular-parallax/scripts/angular-parallax.js',
-			'vendor/ng-resize/dist/ng-resize.js'
+      'vendor/angular-waypoints/dist/angular-waypoints.all.js',
+			'vendor/ng-resize/dist/ng-resize.js',
+			'vendor/angular-image-crop/image-crop.js',
+
 		],
 		css: [
-			'vendor/flexslider/flexslider.css'
-			// 'vendor/animate.css/animate.css'
+			'vendor/flexslider/flexslider.css',
+			'vendor/angular-image-crop/image-crop-styles.css',
+      'vendor/angular-toastr/dist/angular-toastr.css'
 		],
 		assets: [
 		]

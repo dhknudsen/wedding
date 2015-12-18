@@ -1,24 +1,17 @@
-
-<h2>Login Page</h2>
-
-<form>
-    <label>
-        <span>email</span>
-        <input type="text" ng-model="email" />
-    </label>
-    <label>
-        <span>password</span>
-        <input type="password" ng-model="pass" />
-    </label>
-    <label ng-cloak ng-show="createMode">
-        <span>confirm pass</span>
-        <input type="password" ng-model="confirm" />
-    </label>
-    <button ng-click="login(email, pass)" ng-hide="createMode">Log In</button>
-    <button ng-click="createMode = true" ng-hide="createMode">Register</button>
-    <button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
-    <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
-
-    <p ng-show="err" class="error">{{err}}</p>
-</form>
+<div>
+  <form class="nav-login">
+    <div class="form-group">
+      <label for="login-email">Brugernavn</label>
+      <input type="text" class="form-control" id="login-email" ng-model="email" placeholder="Brugernavn">
+    </div>
+    <div class="form-group">
+      <label for="login-password">Adgangskode</label>
+      <input type="password" ng-model="pass" class="form-control" id="login-password" placeholder="Adgangskode">
+    </div>
+    <span class="help-block" ng-show="vm.err">
+      {{vm.err}}
+    </span>
+    <button ng-click="vm.login( email, pass )" class="btn btn-default">Login</button>
+  </form>
+</div>
 

@@ -1,19 +1,98 @@
 <div>
 	<section id="content">
 		<div class="container">
-		  <button class="btn" ng-click="admin.createNew()">Tilføj</button>
-		  <table class="table">
-		  	<thead>
-		  		<tr>
-		  			<th>Name</th>
-		  		</tr>
-		  	</thead>
-		  	<tbody>
-		  		<tr ng-repeat="user in admin.users">
-		  			<td>{{ user.profile.name }}</td>
-		  		</tr>
-		  	</tbody>
-		  </table>
+
+			<h2>Inviationer</h2>
+
+			<ul class="list-inline statsview text-center">
+				<li class="stat stats--invitations">
+					<div class="panel">
+						<div class="panel-body">
+							<div class="stats__icon"><span class="fa fa-envelope-o fa-2x"></span></div>
+							<div class="stats__value">{{ vm.numUsers }}</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="stat stats--people">
+					<div class="panel">
+						<div class="panel-body">
+							<div class="stats__icon"><span class="fa fa-users fa-2x"></span></div>
+							<div class="stats__value">{{ vm.numPeople }}</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="stat stats--attending">
+					<div class="panel panel-success">
+						<div class="panel-body bg-success">
+							<div class="stats__icon"><span class="fa fa-thumbs-o-up fa-2x"></span></div>
+							<div class="stats__value">{{ vm.numAttending }}</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="stat stats--declining">
+					<div class="panel panel-danger">
+						<div class="panel-body bg-danger">
+							<div class="stats__icon"><span class="fa fa-thumbs-o-down fa-2x"></span></div>
+							<div class="stats__value">{{ vm.numDeclining }}</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="stat stats--pending">
+					<div class="panel panel-info">
+						<div class="panel-body bg-info">
+							<div class="stats__icon"><span class="fa fa-question fa-2x"></span></div>
+							<div class="stats__value">{{ vm.numPending }}</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="stat stats--pending" ng-click="vm.createUser()">
+					<div class="panel">
+						<div class="panel-body">
+							<div class="stats__icon"><span class="fa fa-plus fa-2x"></span></div>
+							<div class="stats__value">Tilføj</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<hr />
+
+			<ul class="list-unstyled col-sm-12">
+				<li ng-repeat="( uid, user ) in vm.onlyActivated( vm.users )">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">{{ user.profile.name }}</h3>
+							<button class="btn" ng-click="vm.editUser( uid, user )">edit</button>
+							<button class="btn" ng-click="vm.deleteUser( uid, user )">delete</button>
+						</div>
+						<div class="panel-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Navn</th>
+										<th>Beskrivelse</th>
+										<th>RVSP</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="person in user.people" ng-class="vm.setStatusClass( person.status )">
+										<td>{{ person.name }}</td>
+										<td>{{ person.desc }}</td>
+										<td>
+											{{ vm.showStatus( person.status ) }}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</section>
 </div>
