@@ -1,4 +1,4 @@
-<div id="navigation">
+<div id="navigation" ng-if="loggedIn">
   <nav id="nav-bar" class="animation fadeIn">
     <div id="nav-wrapper">
       <div id="mobile-nav">
@@ -7,16 +7,19 @@
 
       <ul id="nav-menu" class="nav-smooth-scroll">
         <li class="first-child">
-          <a href="#main-slider">HJEM</a>
+          <h1>M+D</h1>
         </li>
         <li>
-          <a href="#our-story">HISTORIEN</a>
+          <a ui-sref="hjem">VELKOMMEN</a>
         </li>
         <li>
-          <a href="#where-when">HVOR &amp; HVORDAN</a>
+          <a ui-sref="program">PROGRAM</a>
         </li>
         <li>
-          <a href="#gallery-section">GALLERI</a>
+          <a ui-sref="practical">PRAKTISK</a>
+        </li>
+        <li>
+          <a ui-sref="wishlist">ØNSKELISTE</a>
         </li>
         <li class="">
           <a href="#more-events">EVENTS</a>
@@ -28,7 +31,7 @@
           <a href="#bridesmaid-section">GÆSTER</a>
         </li>
         <li>
-          <a href="#rsvp-section">RSVP</a>
+          <a ui-sref="rsvp">RSVP</a>
         </li>
       </ul>
 

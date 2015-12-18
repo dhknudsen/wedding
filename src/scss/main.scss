@@ -35,5 +35,8 @@
  * TODO: In a later version of this boilerplate, I'd like to automate this.
  */
 
+@import '../app/layout/layout';
+@import '../app/navigation/navigation';
+
 @import '../app/pages/home/home';
 @import '../app/pages/programme/programme';

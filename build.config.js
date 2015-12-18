@@ -71,7 +71,6 @@ module.exports = {
 			'vendor/jquery/dist/jquery.js',
 			'vendor/flexslider/jquery.flexslider.js',
 			'vendor/angular/angular.js',
-			'vendor/angular-animate/angular-animate.js',
       'vendor/angular-flexslider/angular-flexslider.js',
 			'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
 			'vendor/firebase/firebase.js',

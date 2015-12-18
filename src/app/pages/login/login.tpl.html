@@ -1,0 +1,19 @@
+<section id="login" ng-class="{ 'hide' : vm.processingLogin }">
+  <div class="container">
+    <form class="nav-login">
+      <div class="form-group">
+        <label for="login-email">Brugernavn</label>
+        <input type="text" class="form-control" id="login-email" ng-model="email" placeholder="Brugernavn">
+      </div>
+      <div class="form-group">
+        <label for="login-password">Adgangskode</label>
+        <input type="password" ng-model="pass" class="form-control" id="login-password" placeholder="Adgangskode">
+      </div>
+      <span class="help-block" ng-show="vm.err">
+        {{vm.err}}
+      </span>
+      <button ng-click="vm.login( email, pass )" class="btn btn-default">Login</button>
+    </form>
+  </div>
+</section>
+

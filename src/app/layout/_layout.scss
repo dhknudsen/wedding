@@ -1,0 +1,38 @@
+.body {
+	position: relative;
+	overflow: hidden;
+}
+
+.main {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.container {
+	box-sizing: border-box;
+	padding-left: $sidebar-width;
+
+	.no-sidebar & {
+		padding-left: 0;
+	}
+}
+
+.main.ng-enter, .main.ng-leave {
+    position: absolute;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.main.ng-enter {
+   -webkit-animation-name: fadeInUp;
+   animation-name: fadeInUp;
+}
+
+.main.ng-leave {
+   -webkit-animation-name: fadeOutUp;
+   animation-name: fadeOutUp;
+}

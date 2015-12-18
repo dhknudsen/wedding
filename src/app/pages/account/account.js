@@ -25,7 +25,7 @@
     vm.changePassword = changePassword;
 
     //
-    profile.$bindTo( vm, 'vm.user' ).then( function( ub ) {
+    profile.$bindTo( $scope, 'vm.user' ).then( function( ub ) {
       unbind = ub;
     });
 

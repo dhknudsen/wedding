@@ -1,0 +1,42 @@
+.agenda {}
+
+.programme {
+	padding: 3em;
+	font-family: 'League Spartan';
+}
+
+.programme__item {
+
+	padding: 2em;
+	transition: all ease-in-out 300ms;
+
+	.time {
+		text-align: center;
+		font-size: 2em;
+
+		.minutes {
+			vertical-align: super;
+			font-size: .6em;
+		}
+	}
+
+	.desc {
+		font-family: 'Campton Light';
+		padding: 0 1em 2em 0;
+		border-bottom: 1px solid rgba(106, 106, 106, 0.5);
+		min-height: 3em;
+	}
+
+	&:hover {
+		background-color: white;
+		padding-bottom: 0px;
+		@include shadow-2dp();
+
+		.desc {
+			border-bottom: none;
+			padding-bottom: 1.5em;
+		}
+
+	}
+
+}
