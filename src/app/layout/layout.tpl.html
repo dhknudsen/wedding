@@ -1,10 +1,12 @@
-<div ng-controller="Layout as layoutVm" ng-class="{ 'no-sidebar': !loggedIn }">
+<div ng-controller="Layout as layoutVm">
 
   <!-- Sidenav (desktop/tablet[landscape]) / sticky (mobile/tablet[portrait])  -->
-  <div ng-include="'navigation/navigation.tpl.html'"></div>
+  <div id="navigation" ng-if="layoutVm.menuOpen" ng-include="'navigation/navigation.tpl.html'"></div>
 
   <!-- Main View container -->
-  <div class="main" ui-view="main"></div>
+  <div class="main-wrapper" ng-class="{ 'menuOpen' : layoutVm.menuOpen }">
+    <div id="content" class="main" ui-view="main"></div>
+  </div>
 </div>
 
 <!--

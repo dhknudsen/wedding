@@ -49,7 +49,9 @@
 
       function setPageTitle( event, toState, toParams, fromState, fromParams ) {
         if ( angular.isDefined( toState.data.pageTitle ) ) {
-          $rootScope.pageTitle = toState.data.pageTitle + ' | dhWedding' ;
+
+          $rootScope.pageTitle = toState.data.pageTitle ;
+          $rootScope.title = toState.data.pageTitle + ' | M+D' ;
         }
       }
     }

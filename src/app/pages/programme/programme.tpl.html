@@ -1,17 +1,14 @@
-<div>
-  <!--CONTENT SECTION-->
-  <section id="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6">
-            <ul class="programme list-unstyled">
-              <li class="programme__item row" ng-repeat="item in vm.programme">
-                <programme-item time="item.time" label="item.label"></programme-item>
-              </li>
-            </ul>
-        </div>
+<section id="content"> <!--CONTENT SECTION-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+          <ul class="programme list-unstyled">
+            <li class="programme__item row" ng-repeat="item in vm.programme">
+              <programme-item time="item.time" label="item.label"></programme-item>
+            </li>
+          </ul>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>

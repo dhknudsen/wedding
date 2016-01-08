@@ -1,19 +1,39 @@
-<section id="login" ng-class="{ 'hide' : vm.processingLogin }">
-  <div class="container">
-    <form class="nav-login">
-      <div class="form-group">
-        <label for="login-email">Brugernavn</label>
-        <input type="text" class="form-control" id="login-email" ng-model="email" placeholder="Brugernavn">
+<section id="login" ng-style="{ width: vm.viewport.width + 'px', 'min-height': vm.viewport.height + 'px'}" class="">
+  <div class="container-fluid fadeInUp animated">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>
+          M+D<br>
+          <h4>9JULY</h4>
+        <h4>2016</h4>
+        </h1>
+
       </div>
-      <div class="form-group">
-        <label for="login-password">Adgangskode</label>
-        <input type="password" ng-model="pass" class="form-control" id="login-password" placeholder="Adgangskode">
+    </div>
+    <div class="row">
+      <div class="col-center col-sm-6 col-md-6">
+        <form class="nav-login">
+          <div class="form-group">
+            <label for="login-email">Brugernavn</label>
+            <input type="text" class="form-control" id="login-email" ng-model="email" placeholder="Brugernavn">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Adgangskode</label>
+            <input type="password" ng-model="pass" class="form-control" id="login-password" placeholder="Adgangskode">
+          </div>
+          <span class="help-block" ng-show="vm.err">
+            {{vm.err}}
+          </span>
+        </form>
       </div>
-      <span class="help-block" ng-show="vm.err">
-        {{vm.err}}
-      </span>
-      <button ng-click="vm.login( email, pass )" class="btn btn-default">Login</button>
-    </form>
+    </div>
+
   </div>
+  <div class="container-fluid btn-login-container">
+    <div class="col-center col-sm-6 col-md-6">
+      <button ng-click="vm.login( email, pass )" class="btn btn-default btn-block">Login</button>
+    </div>
+  </div>
+
 </section>
 

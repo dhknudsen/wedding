@@ -8,11 +8,9 @@
 
       // Feature areas
       'dhWedding.layout',
-      'dhWedding.login',
-      'dhWedding.home',
-      'dhWedding.programme',
       'dhWedding.admin',
-      'dhWedding.account'
+      'dhWedding.pages'
+
     ]);
 })();
 

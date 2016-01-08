@@ -5,16 +5,38 @@
 
   Layout.$inject = [ '$scope', '$rootScope', 'resize' ];
 
-  function Layout( $scope, resize ) {
-    var vm = this;
+  function Layout( $scope, $rootScope, resize ) {
+    var vm            = this;
+    var desktopWidth  = 992;
+    var stickySidebar = true;
 
-    //$scope Event Handlers
-    $scope.$on( 'resize', exposeViewportSize );
+    // Bindable variables
+    vm.menuOpen = false;
+
+    // Bindable functions
+    vm.toggleMenu = toggleMenu;
+
+
+    // Event & Watch Handlers
+
+    $scope.$on( 'resize', toggleStickySidebar );
+    $rootScope.$watch( 'loggedIn' , toggleMenu );
 
     ///////////
 
-    function exposeViewportSize( data, $event ) {
-      vm.viewport = $event;
+    function toggleStickySidebar( data, $event ) {
+      stickySidebar = $event.width > desktopWidth;
+      vm.menuOpen = stickySidebar && $rootScope.loggedIn ? true : false;
+    }
+
+    function toggleMenu() {
+      if ( stickySidebar && $rootScope.loggedIn ) {
+        vm.menuOpen = true;
+      } else {
+        vm.menuOpen = $rootScope.loggedIn  ? !vm.menuOpen : false;
+      }
+
+      console.log( 'menuOpen: ', vm.menuOpen );
     }
   }
 

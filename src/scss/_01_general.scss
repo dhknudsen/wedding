@@ -108,3 +108,20 @@ img.fullwidth{
 img.with-border{
 	border:1px solid #6a6a6a;
 }
+
+.vh-align {
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col-center {
+	margin: 0 auto;
+	float: none;
+}

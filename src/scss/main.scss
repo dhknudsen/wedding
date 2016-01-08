@@ -12,8 +12,8 @@
 @import "02_navbar";
 @import "02_alerts";
 @import "03_navmenu";
-@import "04_side-navbar";
-@import "05_logo";
+//@import "04_side-navbar";
+//@import "05_logo";
 @import "06_mainslider";
 @import "07_page";
 @import "08_icon";
@@ -38,5 +38,6 @@
 @import '../app/layout/layout';
 @import '../app/navigation/navigation';
 
+@import '../app/pages/login/login';
 @import '../app/pages/home/home';
 @import '../app/pages/programme/programme';
