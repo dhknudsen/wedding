@@ -4,10 +4,7 @@
 
     'dhWedding.account',
     'dhWedding.home',
-    'dhWedding.login',
-    'dhWedding.practical',
-    'dhWedding.programme',
-    'dhWedding.wishlist'
+    'dhWedding.login'
 
   ]);
 })();

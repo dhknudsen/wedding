@@ -3,12 +3,12 @@
     .module( 'dhWedding.programme' )
     .controller( 'Programme', Programme );
 
-  Programme.$inject = [ '$scope', 'ProgrammePrepData' ];
+  Programme.$inject = [ '$scope', 'ProgrammeData' ];
 
-  function Programme( $scope, ProgrammePrepData ) {
+  function Programme( $scope, ProgrammeData ) {
     var vm = this;
 
-    vm.programme = ProgrammePrepData;
+    vm.programme = ProgrammeData;
 
     ////////
 
