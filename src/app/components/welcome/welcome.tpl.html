@@ -1,31 +1,41 @@
 <section id="home" ng-style="{ 'min-height': vm.viewport.height + 'px'}">
-  <div class="container-fluid vertical-align" ng-style="{ 'min-height': vm.viewport.height + 'px'}">
-    <!-- row-1 -->
+  <div class="container" ng-style="{ 'min-height': vm.viewport.height + 'px'}">
+
+    <!-- Top header logo -->
+    <div class="row top-emblem">
+      <div class="col-xs-8 col-sm-6 col-md-4 col-center fadeInDown animated">
+        <img src="assets/images/flower-emblem-top2.png" class="img-responsive">
+      </div>
+    </div>
+
+    <!-- Profile names -->
     <div class="row">
+      <div class="col-xs-12 text-center">
+        <h4>Kære</h4>
+        <pretty-names name="vm.profile.name"></pretty-names>
+      </div>
+    </div>
 
-      <!-- SECTION TITLE -->
-      <div class="col-md-offset-2 col-md-8 text-center">
-
-        <div class="section-title animation fadeInUp">
-          <h4>Kære</h4>
-          <h2>
-            {{ vm.profile.name }}
-          </h2>
-
-          <p>
-            Vi ser meget frem til vores store dag og til – forhåbentlig - at dele den med dig.
-            På sitet her, kan I bruge til RSVP, få praktiske informationer som sted, tid, ønskeliste, program mv.
-            Klik endelig rundt og tøv ikke med at stille spørgsmål i vores Q&A-bar…
-            Træk os baglænds ind i skuret, vi GLÆDER os til en festlig dag sammen med jer!
-          </p>
-          <p>
-            Kærlige knus<br>
-            <strong>Mathilde & Daniel</strong>
-          </p>
-
+    <!-- Intro text -->
+    <div class="vertical-align">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 text-center">
+          <div class="section-title animated fadeIn">
+            <p>
+              Vi ser meget frem til vores store dag og til – forhåbentlig - at dele den med dig.
+              På sitet her, kan I bruge til RSVP, få praktiske informationer som sted, tid, ønskeliste, program mv.
+              Klik endelig rundt og tøv ikke med at stille spørgsmål i vores Q&A-bar…
+              Træk os baglænds ind i skuret, vi GLÆDER os til en festlig dag sammen med jer!
+            </p>
+            <p>
+              Kærlige knus<br><br>
+              <span class="font-swung animated delay1 fadeInUp">Mathilde <span class="ambersand-black">&</span> Daniel</span>
+            </p>
+          </div>
         </div>
       </div>
-    </div> <!-- /row-1 -->
+    </div>
+
   </div>
 </section>
 

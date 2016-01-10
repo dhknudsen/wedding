@@ -1,4 +1,16 @@
+$mq-breakpoints: (
+    mobile:  480px,
+    tablet:  768px,
+    desktop: 992px,
+    wide:    1200px
+);
+
 $color-main: black;
+
+$color-primary: #CDA85B;
+$color-secondary: #005846;
+$color-tertiary: #FEFAEF;
+$color-quaternary: #642D15;
 
 $header-font-family: 'Quicksand', sans serif;
 $body-font-family: 'Quicksand', sans serif;
@@ -6,3 +18,34 @@ $body-font-family: 'Quicksand', sans serif;
 $font-base-size: 16px;
 
 $sidebar-width: 245px;
+
+// Text colors
+.color-primary {
+	color: $color-primary;
+}
+.color-secondary {
+	color: $color-secondary;
+}
+.color-tertiary {
+	color: $color-tertiary;
+}
+.color-quaternary {
+	color: $color-quaternary;
+}
+.color-white {
+	color: white;
+}
+
+// Background colors
+.color-bg-primary {
+	background-color: $color-primary;
+}
+.color-bg-secondary {
+	background-color: $color-secondary;
+}
+.color-bg-tertiary {
+	background-color: $color-tertiary;
+}
+.color-bg-quaternary {
+	background-color: $color-quaternary;
+}

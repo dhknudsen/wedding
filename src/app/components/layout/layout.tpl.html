@@ -1,0 +1,53 @@
+<div role="main">
+
+  <!-- Sticky header -->
+  <sticky-header on-click="vm.toggleMenu"></sticky-header>
+
+  <!-- Sidenav (desktop/tablet[landscape]) / sticky (mobile/tablet[portrait])  -->
+  <sidebar-navigation toggle="vm.menuOpen"></sidebar-navigation>
+
+  <!-- Main View container -->
+  <div class="main-wrapper" ng-class="{ 'menuOpen' : vm.menuOpen }">
+    <div id="content" class="main" ui-view="main"></div>
+  </div>
+
+  <!--
+
+        -- -- -- LOGGED IN View -- -- ---
+
+            Desktop/                  Mobile/
+        tablet(landscape)         tablet(portrait)
+    ________________________        __________
+    |   |                  |        |        |
+    |   |                  |        |        |
+    | n |                  |        |  main  |
+    | a |       main       |        |        |
+    | v |                  |        |        |
+    |   |                  |        |________|
+    |   |                  |        |  *nav  |
+    ------------------------        ----------
+
+
+
+          -- -- -- LOGIN View -- -- ---
+
+            Desktop/                  Mobile/
+        tablet(landscape)         tablet(portrait)
+    ________________________        __________
+    |                      |        |        |
+    |                      |        |        |
+    |         main         |        |  main  |
+    |         login        |        |  login |
+    |                      |        |        |
+    |                      |        |        |
+    |                      |        |        |
+    ------------------------        ----------
+
+
+  -->
+
+
+
+</div>
+
+

@@ -1,6 +1,6 @@
 (function () {
   angular
-    .module( 'dhWedding.home', [
+    .module( 'dhWedding.welcome', [
       'dhWedding.core',
       'dhWedding.security',
 

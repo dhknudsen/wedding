@@ -1,0 +1,30 @@
+.pretty-names {
+    display: table;
+    width: 100%;
+}
+
+.pretty-names__left,
+.pretty-names__ambersand,
+.pretty-names__right {
+    display: table-cell;
+    height: 75px;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+
+.pretty-names__left {
+	width: 43%;
+	text-align: left
+}
+.pretty-names__ambersand {
+	width: 14%;
+	font-size: 75px;
+	font-weight: 300;
+	text-align: center;
+}
+.pretty-names__right {
+	width: 43%;
+	text-align: right
+}

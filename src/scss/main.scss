@@ -1,8 +1,7 @@
-@import '../assets/fonts/campton/campton';
-@import '../assets/fonts/league-spartan/spartan';
-@import '../../vendor/bootstrap-sass/assets/stylesheets/bootstrap';
 @import "variables";
+@import '../../vendor/sass-mq/mq';
 @import "mixins";
+@import '../../vendor/bootstrap-sass/assets/stylesheets/bootstrap';
 
 /* Theme styling */
 
@@ -28,16 +27,28 @@
 @import "17_animation";
 @import "18_shadows";
 
+
+
 /**
- * Now that all app-wide styles have been applied, we can load the styles for
- * all the submodules and components we are using.
- *
- * TODO: In a later version of this boilerplate, I'd like to automate this.
+ * Basic layout
  */
+@import '../app/components/layout/layout';
+@import '../app/components/navigation/navigation';
+@import '../app/components/sticky-header/sticky-header';
 
-@import '../app/layout/layout';
-@import '../app/navigation/navigation';
 
+
+/*
+ * Components
+ */
+@import '../app/components/welcome/welcome';
+@import '../app/components/welcome/directives/pretty-names/pretty-names';
+@import '../app/components/programme/programme';
+@import '../app/components/practical/practical';
+
+/*
+ * Pages
+ */
 @import '../app/pages/login/login';
-@import '../app/pages/home/home';
-@import '../app/pages/programme/programme';
+
+

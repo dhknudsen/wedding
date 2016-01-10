@@ -1,15 +1,25 @@
 /*===============================================*/
 /* 08. ICON										 */
 /*===============================================*/
+
+.svg-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+
 .de-icon{
 	width: 60px;
 	height: 60px;
 	line-height: 60px;
 	font-size:30px;
 	text-align: center;
-	vertical-align: middle;	
+	vertical-align: middle;
 	margin:8px 0px;
-	
+
 	-webkit-transition: 0.3s all ease;
 	-moz-transition: 0.3s all ease;
 	-o-transition: 0.3s all ease;
@@ -29,7 +39,7 @@
 }
 
 .de-icon.float{
-	float:left; 
+	float:left;
 	margin-right:15px
 }
 
@@ -49,28 +59,28 @@
 	width: 100px;
 	height: 100px;
 	line-height: 100px;
-	font-size:40px;	
+	font-size:40px;
 }
 
 .de-icon.medium-size{
 	width: 54px;
 	height: 54px;
 	line-height: 54px;
-	font-size:21px;	
+	font-size:21px;
 }
 
 .de-icon.small-size{
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
-	font-size:18px;	
+	font-size:18px;
 }
 
 .de-icon.very-small-size{
 	width: 25px;
 	height: 25px;
 	line-height: 25px;
-	font-size:11px;	
+	font-size:11px;
 }
 
 /*------------------------------------------------*/
@@ -173,7 +183,7 @@ a:hover .de-icon.circle.reverse, a:hover .de-icon.rounded.reverse, a:hover .de-i
 	   -moz-transform: scale(1);
 	     -o-transform: scale(1);
 	    -ms-transform: scale(1);
-	        transform: scale(1);	
+	        transform: scale(1);
 }
 
 a:hover .de-icon.effect1{
@@ -181,7 +191,7 @@ a:hover .de-icon.effect1{
 	   -moz-transform: scale(1.2);
 	     -o-transform: scale(1.2);
 	    -ms-transform: scale(1.2);
-	        transform: scale(1.2);	
+	        transform: scale(1.2);
 }
 
 /*------------------------------------------------*/
@@ -192,7 +202,7 @@ a:hover .de-icon.effect1{
 	   -moz-transform: rotate(0deg);
 	     -o-transform: rotate(0deg);
 	    -ms-transform: rotate(0deg);
-	        transform: rotate(0deg);	
+	        transform: rotate(0deg);
 }
 
 a:hover .de-icon.effect2 i{
@@ -200,7 +210,7 @@ a:hover .de-icon.effect2 i{
 	   -moz-transform: rotate(360deg);
 	     -o-transform: rotate(360deg);
 	    -ms-transform: rotate(360deg);
-	        transform: rotate(360deg);	
+	        transform: rotate(360deg);
 }
 
 /*------------------------------------------------*/

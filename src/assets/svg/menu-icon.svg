@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="15px" viewBox="0 0 22 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>menu</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-924.000000, -61.000000)" fill="#CDA85B">
+            <g id="menu" sketch:type="MSLayerGroup" transform="translate(924.000000, 61.000000)">
+                <path d="M21.3125,1 L0.6875,1 C0.308,1 0,0.776 0,0.5 C0,0.224 0.308,0 0.6875,0 L21.3125,0 C21.692,0 22,0.224 22,0.5 C22,0.776 21.692,1 21.3125,1 L21.3125,1 Z" id="Fill-1" sketch:type="MSShapeGroup"></path>
+                <path d="M21.3125,7.81818182 L0.6875,7.81818182 C0.308,7.81818182 0,7.59418182 0,7.31818182 C0,7.04218182 0.308,6.81818182 0.6875,6.81818182 L21.3125,6.81818182 C21.692,6.81818182 22,7.04218182 22,7.31818182 C22,7.59418182 21.692,7.81818182 21.3125,7.81818182 L21.3125,7.81818182 Z" id="Fill-2" sketch:type="MSShapeGroup"></path>
+                <path d="M21.3125,14.6363636 L0.6875,14.6363636 C0.308,14.6363636 0,14.4123636 0,14.1363636 C0,13.8603636 0.308,13.6363636 0.6875,13.6363636 L21.3125,13.6363636 C21.692,13.6363636 22,13.8603636 22,14.1363636 C22,14.4123636 21.692,14.6363636 21.3125,14.6363636 L21.3125,14.6363636 Z" id="Fill-3" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

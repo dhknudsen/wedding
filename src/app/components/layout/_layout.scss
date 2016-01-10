@@ -1,0 +1,49 @@
+body {
+	position: relative;
+}
+
+.container {
+
+}
+
+.main-wrapper {
+}
+
+.main > section {
+	box-sizing: border-box;
+	//padding: 30px;
+	background-color: white;
+}
+
+.divider {
+	height: 40px;
+}
+
+.divider--green {
+	background-color: $color-secondary;
+}
+
+
+.space-for-logo {
+	display: block;
+	height: 75px;
+}
+
+
+// Handle Transistions between pages
+
+.main.ng-enter, .main.ng-leave {
+    position: absolute;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.main.ng-enter {
+   -webkit-animation-name: fadeInUp;
+   animation-name: fadeInUp;
+}
+
+.main.ng-leave {
+   -webkit-animation-name: fadeOutUp;
+   animation-name: fadeOutUp;
+}

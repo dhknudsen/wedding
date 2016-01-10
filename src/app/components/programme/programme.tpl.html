@@ -1,13 +1,14 @@
-<section id="content"> <!--CONTENT SECTION-->
-  <div class="container-fluid">
+<section id="programme" ng-style="{ 'min-height': vm.viewport.height + 'px'}" >
+  <div class="container">
     <div class="row">
       <div class="col-md-6"></div>
-      <div class="col-md-6">
-          <ul class="programme list-unstyled">
-            <li class="programme__item row" ng-repeat="item in vm.programme">
-              <programme-item time="item.time" label="item.label"></programme-item>
-            </li>
-          </ul>
+      <div class="col-sm-6 col-center text-center programme">
+        <h2>Programmet</h2>
+        <ul class=" list-unstyled">
+          <li class="programme__item row" ng-repeat="item in vm.programme">
+            <time-item time="item.time" label="item.label"></time-item>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

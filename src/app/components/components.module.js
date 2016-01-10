@@ -5,7 +5,8 @@
     'dhWedding.welcome',
     'dhWedding.practical',
     'dhWedding.programme',
-    'dhWedding.wishlist'
+    'dhWedding.wishlist',
+    'dhWedding.rsvp'
 
   ]);
 })();

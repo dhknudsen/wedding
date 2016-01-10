@@ -1,0 +1,16 @@
+// Open/Close transition
+
+#navigation.ng-enter, #navigation.ng-leave {
+  transition: all cubic-bezier( 0.250, 0.460, 0.450, 0.940 ) 0.5s;
+  transition-delay: 100ms;
+}
+
+#navigation.ng-enter,
+#navigation.ng-leave.ng-leave-active {
+  transform: translateX( -$sidebar-width  );
+}
+
+#navigation.ng-leave,
+#navigation.ng-enter.ng-enter-active {
+  transform: translateX( 0px );
+}
