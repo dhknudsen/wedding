@@ -8,6 +8,8 @@
     A simple wrapper on Firebase and
     AngularFire to simplify deps and keep things DRY
   */
+  UtilFactory.$inject = ['$window', 'FBURL', '$q'];
+
   function UtilFactory( $window, FBURL, $q ) {
     'use strict';
 

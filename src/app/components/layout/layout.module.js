@@ -1,17 +1,17 @@
 (function(){
   angular
     .module( 'dhWedding.layout', [
+      // core modules
       'dhWedding.core',
       'dhWedding.security',
+
+      // layout components
       'dhWedding.navigation',
       'dhWedding.stickyHeader',
 
-      'placeholders',
-      'angular-flexslider',
-      'angular-parallax',
-      'toastr',
-      'zumba.angular-waypoints',
-      'ngResize'
+      // 3-party dependencies (outside of core)
+      //'placeholders'
+
 
     ]);
 })();

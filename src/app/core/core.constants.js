@@ -12,6 +12,10 @@
     .constant( 'logggedInRedirectState', 'hjem' )
 
     // your Firebase data URL goes here, no trailing slash
-    .constant( 'FBURL', 'https://dhk-angular-auth.firebaseio.com' );
+      // DEVELOPMENT ENDPOINT
+      //.constant( 'FBURL', 'https://md-development.firebaseio.com' );
+
+      // PRODUCTION (BEWARE - THERE BE DRAGONS)
+      .constant( 'FBURL', 'https://dhk-angular-auth.firebaseio.com' );
 
 })();

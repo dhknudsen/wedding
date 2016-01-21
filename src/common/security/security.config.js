@@ -7,8 +7,6 @@
 
     function configure( $stateProvider, rolesProvider, secureRoutesProvider ) {
 
-      // credits for this idea:
-      // https://groups.google.com/forum/#!msg/angular/dPr9BpIZID0/MgWVluo_Tg8J
       $stateProvider.stateAuthenticated = function ( stateName, route, accessLevel ) {
         route.resolve    = route.resolve || {};
         var roles        = rolesProvider.$get();
@@ -47,37 +45,32 @@
 
           var user;
           return  Auth.$requireAuth()
-                    .then( loadProfile )
+                    .then( loadRole )
                     .then( checkAuthorization );
 
           ///////
 
-          function loadProfile( userObj ) {
-            user = userObj;
-            return $firebaseObject( fbutil.ref( 'users', userObj.uid ) );
+          function loadRole( userObj ) {
+            var role = _.get($rootScope, 'user.role'); // Got local roles if present, otherwise fetch from FB
+            return role ? role : $firebaseObject( fbutil.ref( ['users', userObj.uid, 'role' ] ) );
           }
 
-          function checkAuthorization( profile ) {
-            return profile.$loaded(function checkProfile( userProfile ) {
+          function checkAuthorization( role ) {
+            return role.$loaded ? role.$loaded( checkProfile ): checkProfile( role );
+
+            function checkProfile( role ) {
 
               var deferred = $q.defer();
-              var notSameUserProfile = ( $rootScope.userProfile && $rootScope.userProfile.$id !== user.uid );
-
-              if ( !$rootScope.userProfile || notSameUserProfile ) {
-                userProfile
-                  .$bindTo( $rootScope, 'userProfile' )
-                  .then( function( ub ) { $rootScope.unbind = ub; } );
-              }
 
               // Perform our Authorization check to this route
-              if ( secureRoutes[ stateName ] <= userProfile.role.level ) {
-                deferred.resolve( user );
+              if ( secureRoutes[ stateName ] <= role.level ) {
+                deferred.resolve( $rootScope.user );
               } else {
                 deferred.reject( 'AUTH_REQUIRED' );
               }
 
               return deferred.promise;
-            });
+            }
           }
         }
 

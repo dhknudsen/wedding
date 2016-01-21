@@ -6,22 +6,26 @@
   Login.$inject = [ '$scope', 'Auth', '$location', 'resize' ];
 
   function Login( $scope, Auth, $location, resize ) {
-    var vm             = this;
-    var emailpostfix   = '@mogd.dk';
+    var vm        = this;
+    var postfix   = '@mogd.dk';
 
     //Bindable values
-    vm.err             = null;
-    vm.processingLogin = false;
+    vm.err        = null;
+    vm.processing = false;
 
     //Bindable functions
-    vm.login           = login;
+    vm.login      = login;
 
     //Event handling
     $scope.$on( 'resize', exposeViewportSize );
-    resize.trigger();
+
+    activate();
 
     /////////
 
+    function activate() {
+      resize.trigger();
+    }
 
     function exposeViewportSize( data, $event ) {
       vm.viewport = $event;
@@ -31,11 +35,11 @@
 
       if ( email ) {
         // append email postfix if 'email' username is not an email adress
-        email = (( email.indexOf( '@' ) === -1 ) ? email + emailpostfix : email).toLowerCase();
+        email = (( email.indexOf( '@' ) === -1 ) ? email + postfix : email).toLowerCase();
       }
 
       vm.err = null;
-      vm.processingLogin = true;
+      vm.processing = true;
 
       Auth
         .$authWithPassword({ email: email, password: pass }, { rememberMe: true })
@@ -43,12 +47,12 @@
     }
 
     function redirectAfterLogin( /* user */ ) {
-      vm.processingLogin = false;
+      vm.processing = false;
       $location.path( '/hjem' );
     }
 
     function displayErrors( err ) {
-      vm.processingLogin = false;
+      vm.processing = false;
       vm.err = errMessage( err );
     }
 

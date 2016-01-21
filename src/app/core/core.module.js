@@ -17,7 +17,10 @@
         // 3-party dependencies
         'firebase',
         'ui.bootstrap',
-        'ui.router'
+        'ui.router',
+        'toastr',
+        'ngResize',
+        'smoothScroll'
 
       ]);
 })();

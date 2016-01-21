@@ -1,17 +1,13 @@
 <section id="login" ng-style="{ width: vm.viewport.width + 'px', 'min-height': vm.viewport.height + 'px'}" class="">
   <div class="container-fluid fadeInUp animated">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h1>
-          M+D<br>
-          <h4>9JULY</h4>
-        <h4>2016</h4>
-        </h1>
 
-      </div>
-    </div>
     <div class="row">
-      <div class="col-center col-sm-6 col-md-6">
+      <div class="col-center col-xs-10 col-sm-6 col-md-4 login-form">
+        <div class="logo-box">
+          <img src="/assets/images/emblem2.png" class="img-responsive">
+        </div>
+        <h2 class="font-swung">Mathilde & Daniel</h2>
+
         <form class="nav-login">
           <div class="form-group">
             <label for="login-email">Brugernavn</label>
@@ -40,14 +36,9 @@
           <span class="help-block" ng-show="vm.err">
             {{vm.err}}
           </span>
+          <button ng-click="vm.login( email, pass )" class="btn color-bg-primary color-white">Login</button>
         </form>
       </div>
-    </div>
-
-  </div>
-  <div class="container-fluid btn-login-container">
-    <div class="col-center col-sm-6 col-md-6">
-      <button ng-click="vm.login( email, pass )" class="btn btn-default btn-block">Login</button>
     </div>
   </div>
 
