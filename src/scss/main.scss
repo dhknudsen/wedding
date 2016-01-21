@@ -6,9 +6,10 @@
 /* Theme styling */
 
 @import "00_variables";
+@import "00_animation";
 @import "preloader/preloader";
 @import "01_general";
-@import "02_navbar";
+//@import "02_navbar";
 @import "02_alerts";
 @import "03_navmenu";
 //@import "04_side-navbar";
@@ -24,7 +25,7 @@
 @import "14_onepage-section";
 @import "15_plugins";
 @import "16_media-screen";
-@import "17_animation";
+
 @import "18_shadows";
 
 
@@ -45,10 +46,14 @@
 @import '../app/components/welcome/directives/pretty-names/pretty-names';
 @import '../app/components/programme/programme';
 @import '../app/components/practical/practical';
+@import '../app/components/rsvp/rsvp';
+@import '../app/components/wishlist/wishlist';
 
 /*
  * Pages
  */
 @import '../app/pages/login/login';
+@import '../app/pages/admin/admin';
+@import '../app/pages/home/home';
 
 

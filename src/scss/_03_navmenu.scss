@@ -10,7 +10,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: $sidebar-width;
+	width: 100%;
 	background: white;
 	border-right: 1px solid rgba(0,0,0,0.1);
 	height: 100%;
@@ -19,12 +19,35 @@
 	overflow-x: hidden;
 	z-index: 1000;
 
+	@include mq($from: tablet) {
+		width: $sidebar-width;
+	}
 
 }
 
+#nav-menu{
+	list-style-type:none;
+	margin:0;
+	padding:1em 0 0 0;
+	font-family: $header-font-family;
+	font-size: 16px;
+	z-index:1000;
+}
+
+.space-for-logo {
+	display: block;
+    height: 75px;
+    margin: 2em 0 0 45px;
+    text-align: left;
+	& > img {
+		width: 75px;
+	}
+}
+
+
 #nav-menu > li{
 	width: 100%;
-	text-align: center;
+	text-align: left;
 }
 
 #nav-menu > li.first-child:before{
@@ -37,6 +60,8 @@
 	padding:18px;
 	color:#666;
 	text-decoration:none;
+	cursor: pointer;
+	padding-left: 40px;
 }
 
 #nav-menu > li a:hover{
@@ -99,6 +124,7 @@
 	width:100%;
 	background-color:#FFF;
 	border-bottom:solid thin #f4f2f2;
+	cursor: pointer;
 }
 
 #nav-menu ul li a:hover{

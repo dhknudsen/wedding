@@ -76,11 +76,11 @@
 		margin:0;
 	}
 
-	#nav-menu { display: none }
+	//#nav-menu { display: none }
 	#nav-menu.sidebar {display:block}
 	#nav-menu.open { display: block; }
 
-	#nav-menu,
+	//#nav-menu,
 	.bottom-bar.transparent #nav-menu{
 		list-style-type:none;
 		margin:0;
@@ -139,17 +139,12 @@
 		display:block;
 		width:100%;
 		color:#666;
-		border-bottom:solid thin #f4f2f2;
 	}
 
 	.transparent #nav-menu li a{
 		color:#666;
 	}
 
-	#nav-menu li a:hover{
-		background-color:$color-main;
-		color:#FFF;
-	}
 
 	#nav-menu li:before{
 		content: '';
@@ -404,7 +399,7 @@
 	/* 02.2 Logo & Nav Position						 */
 	/* ----------------------------------------------*/
 	#nav-menu{
-		height:230px !important;
+
 	}
 }
 
