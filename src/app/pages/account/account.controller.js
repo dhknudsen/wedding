@@ -3,20 +3,22 @@
     .module( 'dhWedding.account' )
     .controller( 'Account', Account );
 
-  Account.$inject = [ '$scope', 'Auth', 'fbutil', 'user', '$state', 'loginRedirectState', '$firebaseObject'];
+  Account.$inject = [ '$scope', '$rootScope', 'Auth', 'fbutil', 'user', '$state', 'loginRedirectState'];
 
-  function Account( $scope, Auth, fbutil, user, $state, loginRedirectState, $firebaseObject ) {
+  function Account( $scope, $rootScope, Auth, fbutil, user, $state, loginRedirectState ) {
+
+    console.log('user: ', user);
 
     var unbind;
     var vm            = this;
     var emailpostfix  = '@mogd.dk';
-    var profile       = $firebaseObject( fbutil.ref( 'users', user.uid ) );
 
     //Bindable values
     vm.err            = null;
     vm.msg            = null;
     vm.emailerr       = null;
     vm.emailmsg       = null;
+    vm.user           = $rootScope.user;
 
     //Bindable functions
     vm.clear          = resetMessages;
@@ -24,10 +26,7 @@
     vm.changeEmail    = changeEmail;
     vm.changePassword = changePassword;
 
-    //
-    profile.$bindTo( $scope, 'vm.user' ).then( function( ub ) {
-      unbind = ub;
-    });
+    //////
 
     function changeEmail( pass, newEmail ) {
 

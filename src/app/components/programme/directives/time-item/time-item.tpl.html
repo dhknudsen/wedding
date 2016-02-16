@@ -1,7 +1,14 @@
 <div>
-  <div class="time">
-    <span class="hour">{{ vm.hour }}</span><span class="minutes">{{ vm.minutes }}</span>
+  <div class="time-container">
+    <span class="time time-from">
+      <span class="hour">{{ vm.fromHour }}</span><span class="minutes">{{ vm.fromMinutes }}</span>
+    </span>
+    <span>-</span>
+    <span class="time time-to">
+      <span class="hour">{{ vm.toHour }}</span><span class="minutes">{{ vm.toMinutes }}</span>
+    </span>
   </div>
+
   <div class="desc">
     {{ vm.label }}
   </div>

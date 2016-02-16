@@ -13,7 +13,7 @@
       controller: 'Rsvp',
       controllerAs: 'vm',
       bindToController: {
-        //...//
+        user: '='
       }
     };
 

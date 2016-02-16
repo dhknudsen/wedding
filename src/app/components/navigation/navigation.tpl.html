@@ -1,28 +1,41 @@
-<div id="navigation" ng-if="vm.toggle">
-  <nav class="animation fadeIn">
-    <div>
-      <div class="space-for-logo"></div>
-      <ul id="nav-menu" class="nav-smooth-scroll">
-        <li>
-          <a ui-sref="hjem">VELKOMMEN</a>
-        </li>
-        <li>
-          <a ui-sref="program">PROGRAM</a>
-        </li>
-        <li>
-          <a ui-sref="praktisk">PRAKTISK</a>
-        </li>
-        <li>
-          <a ui-sref="oenskeliste">GAVEØNSKER</a>
-        </li>
-        <li>
-          <a ui-sref="people">PERSONER</a>
-        </li>
-        <li>
-          <a ui-sref="rsvp">RSVP</a>
-        </li>
-      </ul>
-      <div class="clearboth"></div>
+<div>
+  <div id="navigation" ng-if="vm.toggle">
+    <nav class="animation fadeIn">
+      <div>
+        <div class="space-for-logo">
+          <img src="/assets/images/emblem2.png" />
+        </div>
+        <ul id="nav-menu" class="nav-smooth-scroll">
+          <li ng-if="vm.isAdmin">
+            <a ui-sref="admin" ng-click="vm.closeMenu('admin')">ADMIN</a>
+          </li>
+          <li>
+            <a ng-click="vm.closeMenu('hjem')" scroll-to="home">VELKOMMEN</a>
+          </li>
+          <li>
+            <a ng-click="vm.closeMenu('hjem')" scroll-to="programme">PROGRAM</a>
+          </li>
+          <li>
+            <a ng-click="vm.closeMenu('hjem')" scroll-to="practical">PRAKTISK</a>
+          </li>
+          <li>
+            <a ng-click="vm.closeMenu('hjem')" scroll-to="rsvp">RSVP</a>
+          </li>
+          <li>
+            <a ng-click="vm.closeMenu('hjem')" scroll-to="wishlist">GAVEØNSKER</a>
+          </li>
+        </ul>
+        <div class="clearboth"></div>
+      </div>
+    </nav>
+    <div class="user-box">
+      <label>logget ind som:</label>
+      <div class="user-name">{{vm.user.profile.name}}</div>
+      <br>
+      <button class="btn" ng-click="vm.logout()">Log ud</button>
+
     </div>
-  </nav>
+  </div>
+  <div id="navigation-content-overlay" ng-if="vm.toggle" ng-click="vm.closeMenu('overlay')"></div>
 </div>
+

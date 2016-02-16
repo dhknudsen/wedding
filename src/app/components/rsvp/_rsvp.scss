@@ -1,1 +1,116 @@
-.rsvp {}
+#rsvp {
+
+	& .form-control::placeholder,
+	& .form-control::-moz-placeholder,
+  & .form-control:-ms-input-placeholder,
+  & .form-control::-webkit-input-placeholder {
+    color: rgba(0,0,0,0.2);
+  }
+
+}
+
+.rsvp-person {
+	padding: 40px;
+  margin: 10px;
+  text-align: center;
+  background: url('/assets/images/flowers-middle-bg2.png') no-repeat;
+  background-color: white;
+  background-size: contain;
+  background-position: right center;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.02);
+}
+
+.line-divider {
+    width: 36px;
+    height: 1px;
+    background-color: #CDA85B;
+    margin: 15px auto 0;
+    display: block;
+}
+
+.choice-list {
+  margin: 50px auto;
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 0;
+  text-align: center;
+}
+
+.cbx {
+	display: inline-block;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  -moz-border-radius: 80px;
+  -webkit-border-radius: 80px;
+  border-radius: 80px;
+  border: 1px solid $color-primary;
+  margin: 0 5px;
+  -moz-transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cbx.is-checked {
+	border-color: transparent;
+}
+
+.cbx:hover {
+  background-color: $color-primary;
+}
+.cbx:hover:after {
+  color: white;
+}
+.cbx:after {
+  line-height: 80px;
+  display: block;
+  content: "";
+  color: black;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  font-size: 54px;
+  -moz-transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), font-size 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), font-size 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), font-size 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), font-size 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.cbx.is-checked:after {
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  font-size: 30px;
+  color: white;
+}
+.cbx.is-checked:hover:after {
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.cbx--yes:after {
+  content: "Ja";
+  background-color: rgba(165, 194, 92, 0);
+}
+.cbx--yes.is-checked:after {
+  background-color: $color-secondary;
+}
+
+.cbx--no:after {
+  content: "Nej";
+  background-color: rgba(241, 76, 56, 0);
+}
+.cbx--no.is-checked:after {
+  background-color: #f14c38;
+}

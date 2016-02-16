@@ -45,7 +45,7 @@
 
       function save() {
         var emailString = vm.profile.email.trim();
-        vm.profile.email = emailString + emailString.indexOf( '@' ) === -1 ? vm.emailpostfix : '';
+        vm.profile.email = emailString + (emailString.indexOf( '@' ) === -1 ? vm.emailpostfix : '');
         $uibModalInstance.close( theUser );
       }
 

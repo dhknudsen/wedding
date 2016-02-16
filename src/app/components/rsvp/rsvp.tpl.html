@@ -11,8 +11,23 @@
 
     <div >
       <div class="row">
-        <div class="col-sm-4" ng-repeat="person in vm.people" class="rsvp-person">
+        <div class="col-sm-12 col-md-10 col-center">
+            <ul class="list-unstyled row">
+              <li ng-repeat="person in vm.user.people" class="col-xs-12 col-sm-6">
+                <div class="rsvp-person">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h2>{{person.name}}</h2>
+                      <div class="line-divider"></div>
+                    </div>
+                    <div ng-if="person.saved"
+                         ng-include="'components/rsvp/partials/savedPerson.tpl.html'"></div>
 
+                    <div  ng-if="!person.saved"
+                          ng-include="'components/rsvp/partials/editPerson.tpl.html'"></div>
+                  </div>
+              </li>
+            </ul>
         </div>
       </div>
     </div>

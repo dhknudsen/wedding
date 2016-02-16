@@ -1,0 +1,10 @@
+footer {
+	box-sizing: border-box;
+	padding: 3em;
+	background-color: #EFEFEF;
+	color: rgba(0,0,0,0.1);
+
+	& .font-swung {
+		color: rgba(0,0,0,0.1);
+	}
+}

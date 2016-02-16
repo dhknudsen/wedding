@@ -1,8 +1,11 @@
 <section id="home" ng-style="{ 'min-height': vm.viewport.height + 'px'}">
   <div class="container" ng-style="{ 'min-height': vm.viewport.height + 'px'}">
 
-    <!-- Top header logo -->
+    <!-- Top header logo's -->
     <div class="row top-emblem">
+      <div class="header-logo">
+        <img src="/assets/images/emblem2.png" />
+      </div>
       <div class="col-xs-8 col-sm-6 col-md-4 col-center fadeInDown animated">
         <img src="assets/images/flower-emblem-top2.png" class="img-responsive">
       </div>
@@ -12,7 +15,7 @@
     <div class="row">
       <div class="col-xs-12 text-center">
         <h4>Kære</h4>
-        <pretty-names name="vm.profile.name"></pretty-names>
+        <pretty-names name="vm.name"></pretty-names>
       </div>
     </div>
 
@@ -21,11 +24,16 @@
       <div class="row">
         <div class="col-sm-offset-2 col-sm-8 text-center">
           <div class="section-title animated fadeIn">
-            <p>
-              Vi ser meget frem til vores store dag og til – forhåbentlig - at dele den med dig.
-              På sitet her, kan I bruge til RSVP, få praktiske informationer som sted, tid, ønskeliste, program mv.
-              Klik endelig rundt og tøv ikke med at stille spørgsmål i vores Q&A-bar…
-              Træk os baglænds ind i skuret, vi GLÆDER os til en festlig dag sammen med jer!
+            <p>Hjerteligt velkommen</p>
+
+              <p>Vi ser meget frem til vores store dag og til – forhåbentlig - at dele den med <ng-pluralize count="vm.numPeople" when="{ 'one': 'dig', 'other': 'jer' }"></ng-pluralize>. Som en smule forbederelse til dagen har vi lavet dette site, hvor kan <ng-pluralize count="vm.numPeople" when="{ 'one': 'du', 'other': 'i' }"></ng-pluralize> melde <ng-pluralize count="vm.numPeople" when="{ 'one': 'dit', 'other': 'jeres' }"></ng-pluralize> svar på invitationen, finde praktiske informationer som tid og sted, ønskeliste, program, musik, dress code, mv.
+
+              <!-- Klik endelig rundt og tøv ikke med at stille spørgsmål i vores Q&A-bar… -->
+
+              <br><br>
+              Vi GLÆDER OS HELT VILDT til en festlig dag sammen med <ng-pluralize count="vm.numPeople" when="{ 'one': 'dig', 'other': 'jer' }"></ng-pluralize>!<br>
+              Vi håber virkelig at vi ses den 9. juli
+
             </p>
             <p>
               Kærlige knus<br><br>

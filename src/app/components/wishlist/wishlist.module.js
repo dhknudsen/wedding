@@ -4,11 +4,7 @@
       'dhWedding.core',
       'dhWedding.security',
 
-      'placeholders',
-      'angular-flexslider',
-      'angular-parallax',
-      'toastr',
-      'zumba.angular-waypoints',
-      'ngResize'
+      // 3-party modules
+      //'angularGrid'
     ]);
 })();

@@ -56,22 +56,24 @@
           }
 
           function checkAuthorization( role ) {
-            return role.$loaded ? role.$loaded( checkProfile ): checkProfile( role );
-
-            function checkProfile( role ) {
-
-              var deferred = $q.defer();
-
-              // Perform our Authorization check to this route
-              if ( secureRoutes[ stateName ] <= role.level ) {
-                deferred.resolve( $rootScope.user );
-              } else {
-                deferred.reject( 'AUTH_REQUIRED' );
-              }
-
-              return deferred.promise;
-            }
+            // role is FB obj, and should have $loaded prop, but check just in case.
+            return role.$loaded ? role.$loaded( checkRole ) : checkRole( role );
           }
+
+          function checkRole( role ) {
+
+            var deferred = $q.defer();
+
+            // Perform our Authorization check to this route
+            if ( secureRoutes[ stateName ] <= role.level ) {
+              deferred.resolve( $rootScope.user );
+            } else {
+              deferred.reject( 'AUTH_REQUIRED' );
+            }
+
+            return deferred.promise;
+          }
+
         }
 
         return this;

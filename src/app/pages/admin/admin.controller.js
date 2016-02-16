@@ -4,25 +4,13 @@
     .controller( 'Admin', Admin );
 
     Admin.$inject = [
-      '$scope',
-      '$rootScope',
-      'Auth',
-      '$firebaseObject',
-      'fbutil',
-      '$uibModal',
-      'confirmModal',
-      'AdminModels'
+      '$scope', '$rootScope', 'Auth', '$firebaseObject',
+      'fbutil', '$uibModal', 'confirmModal', 'AdminModels'
     ];
 
     function Admin(
-      $scope,
-      $rootScope,
-      Auth,
-      $firebaseObject,
-      fbutil,
-      $uibModal,
-      confirmModal,
-      AdminModels
+      $scope, $rootScope, Auth, $firebaseObject,
+      fbutil, $uibModal, confirmModal, AdminModels
     ) {
 
       var vm            = this;
@@ -36,70 +24,147 @@
       vm.numDeclining  = 0;
       vm.numPending    = 0;
 
+      vm.sortType     = 'name'; // set the default sort type
+      vm.sortReverse  = false;  // set the default sort order
+      vm.searchFilter = '';
+      vm.statusFilter = '';
+
       //Bindable functions
+      vm.sort           = sort;
       vm.createUser     = createUser;
       vm.editUser       = editUser;
       vm.deleteUser     = deleteUser;
-      vm.onlyActivated  = onlyActivated;
-      vm.showStatus     = showStatus;
+      //vm.showStatus     = showStatus;
       vm.setStatusClass = setStatusClass;
+      vm.clearSearch    = clearSearch;
+      vm.filter = filter;
 
-      users.$loaded( function( data ) {
-        vm.users = users;  //expose data when resolved
-      });
+      activate();
 
-      $scope.$watch(  //watch admin.user to update summary values
-        function watch( scope ) {
-          return ( vm.users );
-        },
-        function changeHandler( newVal, oldVal ) {
-          var numUsers     = 0;
-          var numPeople    = 0;
-          var numAttending = 0;
-          var numDeclining = 0;
-          var numPending   = 0;
+      ///////
 
-          var currentUsers = vm.onlyActivated( newVal );
+      function activate() {
 
-          angular.forEach( currentUsers, function( user, index ) {
-            numUsers  += 1;
-            numPeople += user.people.length;
+        users
+          .$loaded()
+          .then( startWatch )
+          .then( filterActivated )
+          .then( updateStats )
+          .then( buildPeopleArray );
+      }
 
-            _.forEach( user.people, function( person ) {
-              switch ( person.status ) {
-                case 'accepted':
-                  numAttending += 1;
-                  break;
-                case 'rejected':
-                  numDeclining += 1;
-                  break;
-                case 'tentative':
-                  numPending += 1;
-                  break;
-                default:
-                  //do nothing
-              }
-            });
-          });
+      function clearSearch() {
+        vm.searchFilter = '';
+      }
 
-          vm.numUsers      = numUsers;
-          vm.numPeople     = numPeople;
-          vm.numAttending  = numAttending;
-          vm.numDeclining  = numDeclining;
-          vm.numPending    = numPending;
+      function filter(status) {
+        if (status === 'all') {
+          vm.statusFilter = '';
+        } else {
+          vm.statusFilter = vm.statusFilter === status ? '' : status;
         }
-      );
+      }
+
+      function startWatch( users ) {
+        users.$watch( updateAdminPage );
+        return users;
+      }
+
+      function updateAdminPage( $event ) {
+        updateStats(users);
+        buildPeopleArray( filterActivated( users ) );
+      }
+
+      //filter users before display
+      function filterActivated( users ) {
+        var result = {};
+        angular.forEach( users, function( user, uid ) {
+          if ( user.hasOwnProperty( 'activated' ) && user.activated && user.role.level === 20 ) {
+            result[ uid ] = user;
+          }
+        });
+        return result;
+      }
+
+      function buildPeopleArray( users ) {
+        var people = [];
+        angular.forEach(users, function (user , key) {
+          if (user.people && angular.isArray(user.people)) {
+            _.forEach(user.people, function(invitePerson) {
+              var person = angular.extend({
+                invite: _.get(user, 'profile.name'),
+                rsvp: showStatus( invitePerson.status ),
+                uid: key
+              }, invitePerson);
+
+              people.push(person);
+            });
+          }
+        });
+        vm.users = users;
+        vm.people = people;
+        return people;
+      }
+
+      function updateStats( users ) {
+
+        var numUsers     = 0;
+        var numPeople    = 0;
+        var numAttending = 0;
+        var numDeclining = 0;
+        var numPending   = 0;
+
+        var currentUsers = filterActivated( users );
+
+        angular.forEach( currentUsers, function( user, index ) {
+
+          numUsers  += 1;
+          numPeople += user.people.length;
+
+          _.forEach( user.people, function( person ) {
+            //console.log('testing: ', person);
+            switch ( person.status ) {
+              case 'accepted':
+                numAttending += 1;
+                break;
+              case 'rejected':
+                numDeclining += 1;
+                break;
+              case 'tentative':
+                numPending += 1;
+                break;
+              default:
+                //do nothing
+            }
+          });
+        });
+
+        console.log('updateStats', users);
+
+        vm.numUsers      = numUsers;
+        vm.numPeople     = numPeople;
+        vm.numAttending  = numAttending;
+        vm.numDeclining  = numDeclining;
+        vm.numPending    = numPending;
+
+        return users;
+      }
+
+      function sort(propName) {
+        vm.sortType = propName;
+        vm.sortReverse = !vm.sortReverse;
+      }
 
       function createUser() {
         var modalInstance = $uibModal.open( AdminModels.get( 'newUserModal' ) );
         modalInstance.result.then( createNewUser );
       }
 
-      function editUser( uid, user ) {
+      function editUser( uid ) {
         var modalInstance = $uibModal.open( AdminModels.get( 'newUserModal', {
           resolve: {
             user: function() {
-              return angular.copy( user );
+              return angular.copy( users[uid] );
             }
           }
         }) );
@@ -133,26 +198,15 @@
         });
       }
 
-      //filter users before display
-      function onlyActivated( users ) {
-        var result = {};
-        angular.forEach( users, function( user, uid ) {
-            if ( user.hasOwnProperty( 'activated' ) && user.activated && user.role.level === 20 ) {
-                result[ uid ] = user;
-            }
-        });
-        return result;
-      }
-
       function showStatus( value ) {
-        return _.result( _.findWhere( statusOptions, { 'value': value } ), 'label' );
+        return _.result( _.find( statusOptions, { 'value': value } ), 'label' );
       }
 
       function setStatusClass( value ) {
         var classes = {
-          tentative: 'info',
-          accepted:  'success',
-          rejected:  'danger'
+          tentative: 'label-info',
+          accepted:  'label-success',
+          rejected:  'label-danger'
         };
         return classes[ value ];
       }

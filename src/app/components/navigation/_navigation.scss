@@ -1,16 +1,62 @@
-// Open/Close transition
+.user-box {
 
-#navigation.ng-enter, #navigation.ng-leave {
+	& label {
+		font-size: 9px;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+
+	& .btn {
+		background-color: transparent;
+		border: thin solid rgb(200,200,200);
+		color: rgb(200,200,200);
+	}
+    width: 100%;
+    color: rgb(200,200,200);
+    box-sizing: border-box;
+    padding: 2em 1em 1em 40px;
+    bottom: 0px;
+}
+
+// Open/Close transition
+#navigation.ng-enter, #navigation.ng-leave,
+#navigation-content-overlay.ng-enter, #navigation-content-overlay.ng-leave {
   transition: all cubic-bezier( 0.250, 0.460, 0.450, 0.940 ) 0.5s;
   transition-delay: 100ms;
 }
 
 #navigation.ng-enter,
 #navigation.ng-leave.ng-leave-active {
-  transform: translateX( -$sidebar-width  );
+  transform: translateX( -100% );
+
+  @include mq($from: tablet) {
+		transform: translateX( -$sidebar-width  );
+	}
+
 }
 
 #navigation.ng-leave,
 #navigation.ng-enter.ng-enter-active {
   transform: translateX( 0px );
 }
+
+
+#navigation-content-overlay.ng-enter,
+#navigation-content-overlay.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#navigation-content-overlay.ng-leave,
+#navigation-content-overlay.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+#navigation-content-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 999;
+}
+
+

@@ -27,18 +27,19 @@
         },
 
         "newPerson": {
-          id:     null,
-          name:   null,
-          desc:   null,
-          email:  null,
-          phone:  null,
-          status: "tentative",
+          id:         null,
+          name:       null,
+          comments:   null,
+          email:      null,
+          phone:      null,
+          saved:      false,
+          status:     "tentative",
           showOnPage: false
         },
 
         "newUserModal": {
           animation: true,
-          templateUrl: 'admin/user/user-modal.tpl.html',
+          templateUrl: 'pages/admin/user/user-modal.tpl.html',
           controller: 'AdminUserModal',
           controllerAs: 'vm',
           size: 'lg',

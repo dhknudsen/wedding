@@ -1,0 +1,13 @@
+<div class="wish-content row">
+  <div class="col-sm-10 wish-cell">
+    <h6 class="color-primary">{{ wish.title }}</h6>
+    <p ng-if="wish.desc" class="desc">{{ wish.desc }}</p>
+  </div>
+  <div class="col-sm-2 text-center wish-cell wish-cell-arrow">
+    <div ng-if="wish.link" class="svg-icon action-arrow">
+      <svg viewBox="0 0 100 100" class="icon shape-codepen">
+        <use xlink:href="#arrow"></use>
+      </svg>
+    </div>
+  </div>
+</div>

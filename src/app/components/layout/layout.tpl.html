@@ -1,10 +1,10 @@
 <div role="main">
 
   <!-- Sticky header -->
-  <sticky-header on-click="vm.toggleMenu"></sticky-header>
+  <sticky-header on-click="vm.toggleMenu" toggle="vm.menuOpen" ng-if="loggedIn"></sticky-header>
 
   <!-- Sidenav (desktop/tablet[landscape]) / sticky (mobile/tablet[portrait])  -->
-  <sidebar-navigation toggle="vm.menuOpen"></sidebar-navigation>
+  <sidebar-navigation toggle="vm.menuOpen" logout="vm.logout" user="vm.user"></sidebar-navigation>
 
   <!-- Main View container -->
   <div class="main-wrapper" ng-class="{ 'menuOpen' : vm.menuOpen }">
@@ -18,7 +18,7 @@
             Desktop/                  Mobile/
         tablet(landscape)         tablet(portrait)
     ________________________        __________
-    |   |                  |        |        |
+    |   |                = |        |        |
     |   |                  |        |        |
     | n |                  |        |  main  |
     | a |       main       |        |        |

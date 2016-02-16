@@ -13,7 +13,7 @@
       controller: 'Practical',
       controllerAs: 'vm',
       bindToController: {
-        //...//
+        user: '='
       }
     };
 

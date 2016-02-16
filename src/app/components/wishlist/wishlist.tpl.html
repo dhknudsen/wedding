@@ -1,3 +1,51 @@
-<div class="container-fluid">
-  Praktisk stas her :)
-</div>
+<section id="wishlist" ng-style="{ 'min-height': vm.viewport.height + 'px'}">
+  <div class="section-transistion"></div>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+          <h1>Gaveønsker</h1>
+        </div>
+        <div class="col-sm-offset-2 col-sm-8 text-center">
+          <div class="section-title animated fadeIn">
+            <p>
+              Vi har været så heldige at få en gavefé til at koordinerer alle gaveønsker. <br>
+              Hun sidder klar på mail: <a ng-href="{{vm.mailTo}}">annelouiselthomsen@hotmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-sm-8" ng-repeat="cats in vm.wishlist">
+        <div class="wish-list-container">
+          <h3 ng-show="cats.items && cats.title">{{cats.title}}</h3>
+          <ul class="wish-list row">
+            <li class="col-sm-12" ng-repeat="wish in cats.items">
+
+              <a  ng-if="wish.link"
+                  ng-href="{{ wish.link }}"
+                  target="_blank"
+                  ng-include="'components/wishlist/partials/wish-item.tpl.html'">
+              </a>
+
+              <div  ng-if="!wish.link"
+                    ng-include="'components/wishlist/partials/wish-item.tpl.html'">
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+

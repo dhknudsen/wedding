@@ -15,8 +15,7 @@
       controllerAs: 'vm',
       bindToController: {
         time:   '=',
-        label:  '=',
-        delimiter: '@'
+        label:  '='
       }
     };
 

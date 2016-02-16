@@ -1,0 +1,52 @@
+<div>
+  <div class="col-sm-12">
+    <ul class="choice-list">
+      <li class="cbx cbx--yes"
+      ng-click="vm.toggleStatus(person, 'accepted')"
+      ng-class="vm.toggleClasses(person, 'accepted')"
+      ng-show="person.status !== 'rejected'"
+      ></li>
+      <li class="cbx cbx--no"
+      ng-click="vm.toggleStatus(person, 'rejected')"
+      ng-class="vm.toggleClasses(person, 'rejected')"
+      ng-show="person.status !== 'accepted'"
+      ></li>
+    </ul>
+  </div>
+
+  <div class="row" ng-show="person.status === 'accepted'">
+
+    <h4>Nej, hvor dejligt du kan komme 😃</h4>
+    <p>Så mangler vi bare din kontaktoplysninger</p>
+
+    <form name="person.$$form">
+
+      <div class="form-group">
+        <label for="email-{{$index}}">Email</label>
+        <input type="email" class="form-control" name="email" ng-blur="vm.updatePerson(person, 'email')" ng-model="person.email" id="email-{{$index}}" placeholder="Email">
+        <p ng-show="person.$$form.email.$invalid" class="help-block">Der er noget galt med den mail addresse. Prøv igen</p>
+      </div>
+
+      <div class="form-group">
+        <label for="phone-{{$index}}">Telefon</label>
+        <input type="tel" class="form-control" name="phone" ng-blur="vm.updatePerson(person, 'phone')" ng-model="person.phone" id="phone-{{$index}}" placeholder="Telefon">
+        <p ng-show="person.$$form.phone.$invalid" class="help-block">Der er noget galt med det telefonnummer. Prøv igen</p>
+      </div>
+
+      <div class="form-group">
+        <label for="comments-{{$index}}">Evt. kommentarer</label>
+        <textarea class="form-control" name="comments" rows="3" ng-blur="vm.updatePerson(person, 'comments')" ng-model="person.comments" id="comments-{{$index}}" placeholder="Sangønsker, allegier, andet"></textarea>
+      </div>
+
+      <p>Klik bekræft for at sende dit svar</p>
+
+      <button class="btn color-bg-primary color-white" ng-disabled="person.$$form.$invalid" ng-click="vm.savePerson(person)">Bekræft</button>
+
+    </form>
+  </div>
+  <div class="row" ng-show="person.status === 'rejected'">
+    <h4>Øv, det er vi da kede at høre 😢</h4>
+    <p>Klik bekræft for at sende dit svar</p>
+    <button class="btn color-bg-primary color-white" ng-click="vm.savePerson(person)">Bekræft</button>
+  </div>
+</div>

@@ -10,11 +10,10 @@
 
       // Bindable vars
       vm.onClick = vm.onClick || onClick;
+      vm.toggle  = vm.toggle  || false;
 
       /////
 
-      function onClick() {
-
-      }
+      function onClick() {}
     }
 })();

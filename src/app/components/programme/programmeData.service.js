@@ -16,60 +16,36 @@
   function data() {
     return [
       {
-        'time': '12:30',
+        'time': '12:30 - 12:45',
         'label': 'Gommen og gæster ankommer til kirken'
       },
       {
-        'time': '12:45',
+        'time': '12:45 - 13:00',
         'label': 'Bruden og brudens far ankommer til kirken '
       },
       {
-        'time': '13:00',
+        'time': '13:00 - 13:30',
         'label': 'Vielsen'
       },
       {
-        'time': '13:30',
-        'label': 'Fotografering af brudepar i/ved kirken med nærmeste familie'
-      },
-      {
-        'time': '14:00',
-        'label': 'Brudeparret forlader kirken '
-      },
-      {
-        'time': '14:15',
+        'time': '14:00 - 14:15',
         'label': 'Gæsterne er ankommet til reception på Varna Palæet '
       },
       {
-        'time': '15:00',
-        'label': 'Brudparret ankommer til Varna Palæet '
+        'time': '14:00 - 18:00 ',
+        'label': 'Reception med musik'
       },
       {
-        'time': '16:30',
-        'label': 'Bryllupskagen skæres for '
-      },
-      {
-        'time': '17:30',
-        'label': 'Der opstilles til store gruppebillede på havetrappen '
-      },
-      {
-        'time': '18:00',
+        'time': '18:00 - 23:30',
         'label': 'Middag '
       },
       {
-        'time': '23:30',
-        'label': 'Kaffe og klargøring til Brudevals '
-      },
-      {
-        'time': '23:45',
+        'time': '23:45 - 23:59',
         'label': 'Brudevals '
       },
       {
-        'time': '00:10',
-        'label': 'En lille overraskelse'
-      },
-      {
-        'time': '00:15',
-        'label': 'DANS, DANS, DANS!'
+        'time': '00:00 - 03:00',
+        'label': 'Lad der være fest!'
       }
     ];
   }

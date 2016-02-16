@@ -1,0 +1,19 @@
+<div>
+  <div class="col-sm-12 text-center">
+    <br>
+    <p>Du har svaret:</p>
+    <h1>
+      <span ng-show="person.status === 'accepted'">Ja</span>
+      <span ng-show="person.status === 'rejected'">Nej</span>
+    </h1>
+  </div>
+  <div class="col-sm-12 text-center">
+    <h4>
+      <span ng-show="person.status === 'accepted'">Vi glæder os meget til at se dig</span>
+      <span ng-show="person.status === 'rejected'">Vi er kede af at du ikke kan komme med</span>
+    </h4>
+    <p>Har du brug for at ændre dine kontaktoplysninger, eller du fortryder dit svar?</p>
+    <button class="btn color-bg-primary color-white" ng-click="vm.reOpenPerson(person)">Ændre</button>
+  </div>
+</div>
+

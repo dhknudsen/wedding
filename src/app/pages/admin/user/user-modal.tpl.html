@@ -1,4 +1,4 @@
-<div>
+<div id="user-modal">
     <div class="modal-header">
         <h3 class="modal-title">Opret ny invitation</h3>
     </div>
@@ -46,7 +46,7 @@
                 <li ng-repeat="person in vm.people" class="col-sm-4">
                   <div class="panel">
                     <div class="panel-heading">
-                      <button class="btn" ng-click="vm.removePerson( $index )"></button>
+                      <button class="btn" ng-click="vm.removePerson( $index )"><i class="fa fa-minus-circle"></i></button>
                     </div>
                     <div class="panel-body">
                       <!-- <div class="form-group">
@@ -65,8 +65,16 @@
                         <input type="text" class="form-control" id="person-name-{{$index}}" required ng-model="person.name" placeholder="Navn">
                       </div>
                       <div class="form-group">
-                        <label for="person-desc-{{$index}}">Beskrivelse</label>
-                        <textarea class="form-control" id="person-desc-{{$index}}" ng-model="person.desc"></textarea>
+                        <label for="person-email-{{$index}}">Email</label>
+                        <input type="text" class="form-control" id="person-email-{{$index}}" ng-model="person.email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="person-phone-{{$index}}">Telefon</label>
+                        <input type="text" class="form-control" id="person-phone-{{$index}}" ng-model="person.phone" placeholder="Telefon">
+                      </div>
+                      <div class="form-group">
+                        <label for="person-comments-{{$index}}">Beskrivelse</label>
+                        <textarea class="form-control" id="person-comments-{{$index}}" ng-model="person.comments"></textarea>
                       </div>
                       <div class="checkbox">
                         <label>

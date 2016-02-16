@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-container</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="arrow-container" sketch:type="MSLayerGroup" transform="translate(-4.000000, -4.000000)">
+            <path d="M0,0 L29,0 L29,29 L0,29 L0,0 L0,0 Z" id="container" sketch:type="MSShapeGroup"></path>
+            <path d="M12.79625,6.53708333 L19.53875,13.2916667 L4.83333333,13.2916667 L4.83333333,15.7083333 L19.53875,15.7083333 L12.79625,22.4629167 L14.5,24.1666667 L24.1666667,14.5 L14.5,4.83333333 L12.79625,6.53708333 Z" id="Arrow" fill="#000000" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

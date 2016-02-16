@@ -1,7 +1,8 @@
 <section id="practical">
-  <div class="container">
-    <!-- row-1 -->
-    <div class="row">
+  <div class="container-fluid">
+
+    <div class="row"> <!-- row-1 -->
+
       <!-- Address 1 -->
       <div square-box class="col-sm-4 col--green vertical-align">
         <div>
@@ -38,48 +39,102 @@
       </div>
     </div>
 
+    <div class="row flex-row"> <!-- row-2 -->
 
-    <div class="row flex-row">
-      <div class="col-sm-8 col--light vertical-align text-padding">
+      <div square-box class="col-sm-4 col-sm-push-8 col--image vertical-align">
+        <img src="/assets/images/varna-square.png" class="img-responsive">
+      </div>
+
+      <div square-box class="col-sm-4 col-sm-pull-4 col--light vertical-align text-padding">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-12">
             <h2 class="color-primary">Dresscode</h2>
             <p>
-              Det vigtigste for tøjvalget er, at I føler jer godt tilpas – og som I kan danse i, naturligvis :)
+              Det vigtigste for tøjvalget er, at I føler jer godt tilpas – og at det er tøj i kan danse i, naturligvis.
             </p>
             <p>
-              Dog vil vi sætte stor pris på, at kjolerne er anden farve end helt sort eller helt hvid.<br>
+              Dog vil vi sætte stor pris på, at kjolerne er af anden farve end helt sort eller hvid.<br>
               Gommen vil bære jakkesæt.
             </p>
           </div>
-          <div class="col-sm-4 vertical-align">
-              <img src="/assets/images/gold-flower.png" class="img-responsive">
+        </div>
+      </div>
+
+      <div square-box class="col-sm-4 col-sm-pull-4 col--light vertical-align text-padding">
+        <div class="row">
+          <div class="col-sm-12">
+              <img src="/assets/images/gold-flower.png" class="img-responsive img-padded">
           </div>
         </div>
       </div>
+
+      <!-- <div class="col-sm-8 col-sm-pull-4 col--light vertical-align text-padding">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2 class="color-primary">Dresscode</h2>
+            <p>
+              Det vigtigste for tøjvalget er, at I føler jer godt tilpas – og at det er tøj i kan danse i, naturligvis.
+            </p>
+            <p>
+              Dog vil vi sætte stor pris på, at kjolerne er af anden farve end helt sort eller hvid.<br>
+              Gommen vil bære jakkesæt.
+            </p>
+          </div>
+          <div class="col-sm-6 vertical-align">
+              <img src="/assets/images/gold-flower.png" class="img-responsive img-padded">
+          </div>
+        </div>
+      </div> -->
+
+
+    </div> <!-- /row-2 -->
+
+
+    <div class="row"> <!-- row-3 -->
       <div square-box class="col-sm-4 col--green vertical-align bg-leaf text-padding">
         <h2 class="color-primary">Skiftetøj</h2>
         <p class="color-white">
           Til de af jer som ønsker at skifte tøj mellem kirke og fest vil der være rigeligt med plads til at skifte på Varna Palæet.
         </p>
       </div>
-    </div> <!-- /row-2 -->
-
-    <!-- row-3 -->
-    <div class="row">
       <div square-box class="col-sm-4 col--image vertical-align">
-        <img src="/assets/images/varna-square.png" class="img-responsive">
+        <img src="/assets/images/mogd-sq-3.jpg" class="img-responsive">
       </div>
       <div square-box class="col-sm-4 col--green bg-bouquet text-padding vertical-align">
-        <h2 class="color-primary">De kære små</h2>
+        <h2 class="color-primary">Musikønsker</h2>
         <p class="color-white">
-          Vi har måtte sætte grænsen et sted og det bliver ved konfirmationen. Har I børn som gerne vil med i kirken til vielsen er de meget velkomne der.
+          Vi ønsker en fest, hvor musikken er for alle, så hvis <ng-pluralize count="vm.numPeople" when="{ 'one': 'du', 'other': 'i' }"></ng-pluralize> har nolge ønsker til sange, så skriv dem i kommentarfeltet under tilmeldingen og vi vil gøre vores bedste for at skaffe dem.
         </p>
+      </div>
+    </div> <!-- /row-3 -->
 
+    <div class="row"> <!-- row-4 -->
+
+      <div square-box class="col-sm-4 col--light bg-rose-creme text-padding vertical-align">
+        <h2 class="color-primary">Sang - Tale - Indslag</h2>
+        <p class="color-quaternary">
+          ​Har <ng-pluralize count="vm.numPeople" when="{ 'one': 'du', 'other': 'i' }"></ng-pluralize> noget på hjerte og vil <ng-pluralize count="vm.numPeople" when="{ 'one': 'du', 'other': 'i' }"></ng-pluralize> gerne dele det på dagen, beder vi <ng-pluralize count="vm.numPeople" when="{ 'one': 'dig', 'other': 'jer' }"></ng-pluralize> sende en mail til toastermasterne, <strong>senest d. 12 juni</strong>.<br>De vil sørge for, at vi når det hele til brudevalsen inden kl. 24
+        </p>
+      </div>
+
+      <div square-box class="col-sm-4 col--green bg-leafs text-padding vertical-align">
+        <a ng-href="{{vm.mailToAddress}}">
+          <p class="color-white">
+            mailaddressen til vores toastmastere Mads og Troels:
+          </p>
+          <h2 class="color-primary" style="word-break: break-all;">danielplusmathilde@gmail.com</h2>
+          <div class="svg-icon action-arrow">
+            <svg viewBox="0 0 100 100" class="icon">
+              <use xlink:href="#arrow"></use>
+            </svg>
+          </div>
+        </a>
       </div>
       <div square-box class="col-sm-4 col--image vertical-align">
-        <img src="/assets/images/mogd-small.png" class="img-responsive">
+        <img src="/assets/images/mogd-sq-1.jpg" class="img-responsive">
       </div>
-    </div> <!-- /row-1 -->
+
+      <div class="col-sm-4 col--image vertical-align"></div>
+    </div> <!-- /row-4 -->
   </div>
 </section>

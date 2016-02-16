@@ -9,8 +9,9 @@
     var vm = this;
 
     vm.viewport = {};
-    vm.profile  = $rootScope.userProfile.profile || {};
-    vm.people   = $rootScope.userProfile.people  || [];
+    vm.user          = vm.user;
+    vm.name          = _.get( vm.user, 'profile.name' );
+    vm.numPeople     = _.get( vm.user, 'people.length' );
 
     //Event handling
     $scope.$on( 'resize', exposeViewportSize );

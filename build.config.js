@@ -24,7 +24,7 @@ module.exports = {
 
     js: [ 'src/**/*.js', '!src/**/*.module.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
 		jsunit: [ 'src/**/*.spec.js' ],
-    jsmodules: [ 'src/**/*.module.js' ],
+    jsmodules: [ 'src/app/app.module.js', 'src/**/*.module.js' ],
 
 		coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
 		coffeeunit: [ 'src/**/*.spec.coffee' ],
@@ -67,31 +67,50 @@ module.exports = {
 	 */
 	vendor_files: {
 		js: [
-			'vendor/lodash/lodash.js',
-			'vendor/jquery/dist/jquery.js',
-			'vendor/flexslider/jquery.flexslider.js',
-			'vendor/angular/angular.js',
-      'vendor/angular-flexslider/angular-flexslider.js',
-			'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-			'vendor/firebase/firebase.js',
-			'vendor/angularfire/dist/angularfire.js',
-			'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
-			'vendor/angular-ui-router/release/angular-ui-router.js',
-			'vendor/angular-ui-utils/modules/route/route.js',
-			'vendor/angular-resource/angular-resource.min.js',
-			'vendor/angular-animate/angular-animate.min.js',
-			'vendor/angular-route/angular-route.min.js',
-			'vendor/angular-localStorageService/src/storageprovider.js',
-      'vendor/angular-toastr/dist/angular-toastr.tpls.js',
-			'vendor/angular-parallax/scripts/angular-parallax.js',
-      'vendor/angular-waypoints/dist/angular-waypoints.all.js',
-			'vendor/ng-resize/dist/ng-resize.js',
-			'vendor/angular-image-crop/image-crop.js',
+      // Vanila JS dependencies
+      //'vendor/lodash/lodash.js',
+      'vendor/animation-frame/AnimationFrame.js',
+      'vendor/shifty/dist/shifty.js',
+      'vendor/rekapi/dist/rekapi.js',
+			//'vendor/firebase/firebase.js',
 
+      // Framework/Libs
+      //'vendor/jquery/dist/jquery.js',
+			//'vendor/angular/angular.js',
+
+      // Angular provided extensions
+      //'vendor/angular-resource/angular-resource.min.js',
+      //'vendor/angular-animate/angular-animate.min.js',
+      //'vendor/angular-route/angular-route.min.js',
+
+      // 3-party Angular plugins/extensions
+
+        // Angular UI
+        //'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+        //'vendor/angular-ui-router/release/angular-ui-router.js',
+
+        // Firebase
+        //'vendor/angularfire/dist/angularfire.js',
+
+        // Global notifications
+        'vendor/angular-toastr/dist/angular-toastr.tpls.js',
+
+        // GLobal resize handling
+        'vendor/ng-resize/dist/ng-resize.js',
+
+        // Scroll plugins
+        'vendor/spark-scroll/src/spark-scroll.js',
+        'vendor/ngSmoothScroll/lib/angular-smooth-scroll.js',
+
+        // Masonry grid plugin
+        //'vendor/angulargrid/angulargrid.js',
+
+        // Other
+        //'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
+        //'vendor/angular-image-crop/image-crop.js'
 		],
 		css: [
-			'vendor/flexslider/flexslider.css',
-			'vendor/angular-image-crop/image-crop-styles.css',
+			//'vendor/angular-image-crop/image-crop-styles.css',
       'vendor/angular-toastr/dist/angular-toastr.css'
 		],
 		assets: [

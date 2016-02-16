@@ -13,7 +13,9 @@
       controller: 'Navigation',
       controllerAs: 'vm',
       bindToController: {
-        toggle: '='
+        toggle: '=',
+        logout: '=',
+        user: '='
       }
     };
 

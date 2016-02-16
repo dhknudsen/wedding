@@ -11,6 +11,8 @@
     .module( 'dhWedding' )
     .config( configure );
 
+  configure.$inject = ['$provide'];
+
   function configure( $provide ) {
     // adapt ng-cloak to wait for auth before it does its magic
     $provide.decorator( 'ngCloakDirective', [ '$delegate', 'Auth',

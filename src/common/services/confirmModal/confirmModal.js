@@ -4,6 +4,8 @@
     .module( 'dhWedding.confirmModal' )
     .service( 'confirmModal', confirmModalService );
 
+    confirmModalService.$inject = ['$uibModal'];
+
     function confirmModalService( $uibModal ) {
 
       var modalDefaults = {

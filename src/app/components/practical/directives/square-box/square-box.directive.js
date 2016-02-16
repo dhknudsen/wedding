@@ -4,8 +4,6 @@
     .module( 'dhWedding.practical' )
     .directive( 'squareBox', squareBox );
 
-  squareBox.$inject = [ 'resize' ];
-
   function squareBox() {
     var directive = {
       restrict: 'A',
@@ -23,13 +21,15 @@
       //////
 
       function init() {
-        scope.setCallback( _.debounce( updateHeight, 200 ) );
+        scope.setCallback( _.debounce( updateHeight, 100 ) );
         el.addClass( 'square-box' );
       }
 
       function updateHeight(data) {
         var isMobile = data.width < 768;
-        var height   = isMobile ? '' : el[0].getBoundingClientRect().width;
+        //var height   = isMobile ? 'auto' : el[0].getBoundingClientRect().width + 'px';
+
+        var height   = el[0].getBoundingClientRect().width + 'px';
 
         el.css( 'height', height );
       }

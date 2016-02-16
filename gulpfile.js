@@ -5,6 +5,7 @@ var gulp                = require('gulp'),
   concat                = require('gulp-concat'),
   config                = require('./build.config.js'),
   conventionalChangelog = require('conventional-changelog'),
+  cssnano               = require('gulp-cssnano'),
   debug                 = require('gulp-debug'),
   del                   = require('del'),
   ecstatic              = require('ecstatic'),
@@ -19,10 +20,12 @@ var gulp                = require('gulp'),
   livereload            = require('gulp-livereload'),
   merge                 = require('merge-stream'),
   ngAnnotate            = require('gulp-ng-annotate'),
+  notify                = require("gulp-notify"),
   pkg                   = require('./package.json'),
   rename                = require('gulp-rename'),
-  sass                  = require('gulp-ruby-sass'),
-  series                = require('stream-series');
+  sass                  = require('gulp-sass'),
+  series                = require('stream-series'),
+  sourcemaps            = require('gulp-sourcemaps'),
   streamqueue           = require('streamqueue'),
   stylish               = require('jshint-stylish'),
   svgstore              = require('gulp-svgstore'),
@@ -32,12 +35,14 @@ var gulp                = require('gulp'),
 
 gulp.task('sass', function () {
 	return gulp.src(config.app_files.scss)
-		.pipe(sass({noCache: true}))
-		.on('error', function (err) { console.log(err.message); })
+		.pipe(notify('sass compile started'))
+    .pipe(sass({noCache: true}))
+  	.on('error', function (err) { console.log(err.message); })
 		.pipe(rename(function(path){
 			path.basename = pkg.name + '-' + pkg.version;
 		}))
-		.pipe(gulp.dest(config.build_dir + '/assets'));
+		.pipe(gulp.dest(config.build_dir + '/assets'))
+    .pipe(notify('sass compile done'));
 });
 
 gulp.task('copy', function() {
@@ -63,14 +68,15 @@ gulp.task('copy', function() {
 });
 
 
-gulp.task('injectify', ['prod'], function () {
+gulp.task('injectify', ['minifyProdCss'], function () {
 
 	var target = gulp.src('./build/index.html'),
 		  files = [].concat(
   			config.vendor_files.css,
-  			'assets/' + pkg.name + '-' + pkg.version + '.app.css',
-  			'js/app.js',
-  			'templates-app.js'
+        'assets/' + pkg.name + '-' + pkg.version + '.app.min.css',
+        'js/app.js',
+  			'templates-app.js',
+        'templates-common.js'
   		),
   		sources = gulp.src(files, {read: false, cwd: config.prod_dir});
 
@@ -78,28 +84,43 @@ gulp.task('injectify', ['prod'], function () {
 		.pipe(gulp.dest(config.prod_dir));
 });
 
+gulp.task('minifyProdCss', ['prod'], function(){
+  return gulp.src(config.build_dir + '/assets/*.css')
+    .pipe(sourcemaps.init())
+      .pipe(cssnano())
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(rename(function(path){
+      path.basename = pkg.name + '-' + pkg.version + '.min';
+    }))
+    .pipe(gulp.dest(config.prod_dir + '/assets'));
+
+});
+
 
 gulp.task('prod', function() {
 
 	var paths = {
-		scriptsNoTest: ['src/**/*.js', '!src/**/*.spec.js'],
+    scriptsModules: ['src/**/*.module.js'],
+		scriptsNoTest: ['src/**/*.js', '!src/**/*.module.js',  '!src/**/*.spec.js'],
 		assets : 'build/assets/**/*',
 		index: 'build/index.html',
-		templates: 'build/templates-app.js'
+		templates: ['build/templates-app.js', 'build/templates-common.js']
 	};
 
 	//Concat into prod/js/app.js
 	var concats = streamqueue(
 		{objectMode: true},
 		gulp.src(config.vendor_files.js),
+    gulp.src(paths.scriptsModules),
 		gulp.src(paths.scriptsNoTest)
 	)
 		.pipe(concat('app.js'))
-		.pipe(ngAnnotate({
-			remove: false,
-			add: false,
-			single_quotes: true
-		}))
+		//.pipe(ngAnnotate({
+			//remove: false,
+			//add: false,
+			//single_quotes: true
+		//}))
+    //.pipe(uglify())
 		.pipe(gulp.dest(config.prod_dir + '/js'));
 
 	//Copy assets
@@ -156,6 +177,7 @@ gulp.task('html2js', function() {
 	return templates.map(function(template) {
 		return gulp.src(template.files)
 			.pipe(html2js({base: 'src/' + template.type, outputModuleName: 'templates-' + template.type}))
+      .pipe(uglify())
 			.pipe(changed(config.build_dir, {extension: '.js'}))
 			.pipe(concat('templates-'+ template.type +'.js'))
 			.pipe(gulp.dest(config.build_dir));
@@ -165,8 +187,8 @@ gulp.task('html2js', function() {
 var indexTask = function() {
 	var target = gulp.src('src/index.html'),
   		vendor_files = [].concat(
-        config.vendor_files.js,
-        config.vendor_files.css
+        config.vendor_files.js
+        //  config.vendor_files.css
       ),
       app_files  = [].concat(
   			config.app_files.js,
@@ -232,6 +254,18 @@ gulp.task('server', function() {
 	http.createServer(ecstatic({root: __dirname + '/build'})).listen(8080);
 	gutil.log(gutil.colors.blue('HTTP server listening on port 8080'));
 });
+
+gulp.task('clean:build', function() {
+  return del.sync('build');
+})
+
+gulp.task('clean:prod', function() {
+  return del.sync('prod');
+})
+
+gulp.task('build', [ 'clean:build', 'svgstore', 'index' ]);
+
+gulp.task('production', ['clean:prod', 'injectify']);
 
 gulp.task('default', [
 	//'jshint',

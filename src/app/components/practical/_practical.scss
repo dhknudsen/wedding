@@ -1,8 +1,18 @@
 #practical {
-	padding-top: 8px;
 
-	& > .container > .row > [class*="col-"] {
-		border: 8px solid white;
+	@include mq($from: tablet, $until: desktop) {
+
+		h2 { font-size: 19px }
+		h3 { font-size: 16px; margin: 15px }
+		h5 { font-size: 14px; margin: 15px }
+		p  { font-size: 11px; line-height: 20px } //15 * (250 / 324)
+	}
+
+	//padding-top: 8px;
+
+	& > .container > .row > [class*="col-"],
+	& > .container-fluid > .row > [class*="col-"] {
+		//border: 8px solid white;
 
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -41,13 +51,33 @@
 	}
 }
 
+.img-padded {
+	box-sizing: border-box;
+	padding: 2em;
+	display: inline-block;
+}
+
 .square-box {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	overflow: hidden;
-	transition: all ease-in-out 300ms;
+	//transition: all ease-in-out 300ms;
+
+	& > img {
+		transition: transform cubic-bezier(0.55, 0.085, 0.68, 0.53) 5000ms;
+	}
+
+	& > img.img-responsive {
+		height: 100%;
+	}
+
+	& > img:hover {
+		// transform: scale(1.18) rotate(0deg);
+		// pointer: cursor;
+	}
+
 }
 
 .map-marker {
@@ -59,6 +89,11 @@
 .bg-bouquet {
 	background-color: $color-secondary;
 	background: url('/assets/images/bouquet-outline-green.png') no-repeat center center;
+}
+
+.bg-rose-creme {
+	background: url('/assets/images/rose-outline-creme.png') no-repeat center center;
+	background-color: $color-tertiary;
 }
 
 .bg-leaf {
@@ -78,7 +113,7 @@
 	}
 }
 
-.bg-leaf {
+.bg-leafs {
 	position: relative;
 	z-index: 1;
 	&::before {
@@ -88,7 +123,7 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: url('/assets/images/rose-outline.png') no-repeat center center;
+		background: url('/assets/images/leafs-outline.png') no-repeat center center;
 		opacity: .3;
 		z-index: -1;
 		background-size: 200px;

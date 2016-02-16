@@ -4,25 +4,35 @@
     .module( 'dhWedding.programme' )
     .controller( 'TimeItem', TimeItem );
 
-  TimeItem.$inject = [ '$scope' ];
-
   function TimeItem() {
-
     var vm = this;
+    var timeunits = getTimeUnits( vm.time );
 
-    vm.delimiter = vm.delimiter || ':';
-    vm.hour      = setTimeProp( 'hour', vm.time, vm.delimiter );
-    vm.minutes   = setTimeProp( 'minutes', vm.time, vm.delimiter );
-  }
+    vm.fromHour    = _.get(timeunits, 'from.hour');
+    vm.fromMinutes = _.get(timeunits, 'from.minutes');
+    vm.toHour      = _.get(timeunits, 'to.hour');
+    vm.toMinutes   = _.get(timeunits, 'to.minutes');
 
-  function setTimeProp( pos, timeString, delimiter ) {
-    var position  = pos === 'hour' ? 0 : 1;
-    var parts     = timeString.split( delimiter );
 
-    if ( position === 1 && parts.length < 2 ) {
-      return '';
+    ///// ///
+
+    function getTimeUnits( timeString ) {
+      return timeString.split( '-' ).reduce( buildUnitsObj, {});
+
+      function buildUnitsObj( obj, item, index ) {
+        var key = index === 0 ? 'from' : 'to';
+        var parts = item.split( ':' );
+
+        obj[ key ] = {
+          hour: parts[ 0 ],
+          minutes: parts[ 1 ]
+        };
+
+        return obj;
+      }
     }
-    return parts[ position ];
   }
+
+
 
 }());

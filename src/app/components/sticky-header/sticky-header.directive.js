@@ -13,7 +13,8 @@
       controller: 'StickyHeader',
       controllerAs: 'vm',
       bindToController: {
-        onClick: '='
+        onClick: '=',
+        toggle: '='
       }
     };
 

@@ -42,7 +42,7 @@
     function getSplitter( string ) {
       var splitter = '';
       [ ' og ', '&' ].forEach(function( item ) {
-        splitter = string.includes( item )  ? item : splitter;
+        splitter = string.indexOf( item ) > -1  ? item : splitter;
       });
       return splitter;
     }

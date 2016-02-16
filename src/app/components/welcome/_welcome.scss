@@ -1,5 +1,7 @@
 .top-emblem {
 	margin-top: -30px;
+	min-height: 130px;
+	transition: min-height ease-in 300ms;
 }
 
 .font-swung {
@@ -10,4 +12,13 @@
 
 .ambersand-black {
 	color: black;
+}
+
+.header-logo {
+	position: absolute;
+	top: 30px;
+	left: 60px;
+	img {
+		width: 75px;
+	}
 }

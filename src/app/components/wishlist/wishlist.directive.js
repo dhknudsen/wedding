@@ -13,7 +13,7 @@
       controller: 'Wishlist',
       controllerAs: 'vm',
       bindToController: {
-        //...//
+        user: '='
       }
     };
 

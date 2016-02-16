@@ -6,8 +6,10 @@
       'dhWedding.core',
       'dhWedding.security',
 
-      // Feature areas
+      // main layout
       'dhWedding.layout',
+
+      // Feature areas
       'dhWedding.admin',
       'dhWedding.pages'
 
