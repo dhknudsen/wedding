@@ -34,7 +34,8 @@
           phone:      null,
           saved:      false,
           status:     "tentative",
-          showOnPage: false
+          showOnPage: false,
+          updated_at: Firebase.ServerValue.TIMESTAMP
         },
 
         "newUserModal": {

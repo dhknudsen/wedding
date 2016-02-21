@@ -34,6 +34,8 @@
       vm.createUser     = createUser;
       vm.editUser       = editUser;
       vm.deleteUser     = deleteUser;
+      vm.hasCaret       = hasCaret;
+      vm.nullsToBottom  = nullsToBottom;
       //vm.showStatus     = showStatus;
       vm.setStatusClass = setStatusClass;
       vm.clearSearch    = clearSearch;
@@ -57,8 +59,8 @@
         vm.searchFilter = '';
       }
 
-      function filter(status) {
-        if (status === 'all') {
+      function filter( status ) {
+        if ( status === 'all' ) {
           vm.statusFilter = '';
         } else {
           vm.statusFilter = vm.statusFilter === status ? '' : status;
@@ -71,7 +73,7 @@
       }
 
       function updateAdminPage( $event ) {
-        updateStats(users);
+        updateStats( users );
         buildPeopleArray( filterActivated( users ) );
       }
 
@@ -88,16 +90,16 @@
 
       function buildPeopleArray( users ) {
         var people = [];
-        angular.forEach(users, function (user , key) {
-          if (user.people && angular.isArray(user.people)) {
-            _.forEach(user.people, function(invitePerson) {
+        angular.forEach( users, function( user, key ) {
+          if ( user.people && angular.isArray( user.people ) ) {
+            _.forEach( user.people, function( invitePerson ) {
               var person = angular.extend({
-                invite: _.get(user, 'profile.name'),
+                invite: _.get( user, 'profile.name' ),
                 rsvp: showStatus( invitePerson.status ),
                 uid: key
-              }, invitePerson);
+              }, invitePerson );
 
-              people.push(person);
+              people.push( person );
             });
           }
         });
@@ -139,7 +141,7 @@
           });
         });
 
-        console.log('updateStats', users);
+        console.log( 'updateStats', users );
 
         vm.numUsers      = numUsers;
         vm.numPeople     = numPeople;
@@ -150,7 +152,16 @@
         return users;
       }
 
-      function sort(propName) {
+      function hasCaret( propName ) {
+        return vm.sortType === propName;
+      }
+
+      function nullsToBottom( person ) {
+        var isDefined = angular.isDefined( person[ vm.sortType ] );
+        return (isDefined ? (vm.sortReverse * 0) : (vm.sortReverse * -1) ) ;
+      }
+
+      function sort( propName ) {
         vm.sortType = propName;
         vm.sortReverse = !vm.sortReverse;
       }
@@ -164,7 +175,7 @@
         var modalInstance = $uibModal.open( AdminModels.get( 'newUserModal', {
           resolve: {
             user: function() {
-              return angular.copy( users[uid] );
+              return angular.copy( users[ uid ] );
             }
           }
         }) );

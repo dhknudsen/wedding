@@ -25,6 +25,7 @@
     "spark-scroll": "*",
     "shifty": "~1.5.1",
     "angulargrid": "https://github.com/s-yadav/angulargrid.git#~0.4.0",
-    "animation-frame": "~0.2.5"
+    "animation-frame": "~0.2.5",
+    "angular-timeago": "dhknudsen/angular-timeago#master"
   }
 }

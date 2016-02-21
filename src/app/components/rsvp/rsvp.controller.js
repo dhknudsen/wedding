@@ -43,26 +43,37 @@
     function updatePerson( person, field ) {
       //Only update if updated field is valid
       if ( person.$$form[ field ].$valid ) {
-        pruneUndefined( person ); //Handle weird firebase bug that triggers on undefined values
+        person.updated_at = Firebase.ServerValue.TIMESTAMP;
+
+        //Handle weird firebase bug that triggers on undefined values
+        pruneUndefined( person );
         vm.user.people.$save( person.id );
       }
     }
 
     function savePerson( person ) {
-      if( person.status === 'accepted' && person.$$form.$valid) {
-        person.saved = true;
-        pruneUndefined( person ); //Handle weird firebase bug that triggers on undefined values
-        vm.user.people.$save( person.id );
-      } else if ( person.status === 'rejected' ) {
-        person.saved = true;
+      var isValid     = person.$$form.$valid;
+      var hasAccepted = person.status === 'accepted';
+      var hasRejected = person.status === 'rejected';
+
+      if ( ( hasAccepted && isValid ) || hasRejected ) {
+        person.saved      = true;
+        person.updated_at = Firebase.ServerValue.TIMESTAMP;
+
+        //Handle weird firebase bug that triggers on undefined values
         pruneUndefined( person );
         vm.user.people.$save( person.id );
       }
     }
 
     function reOpenPerson( person ) {
-      person.saved = false;
-      person.status = 'tentative';
+      person.saved      = false;
+      person.status     = 'tentative';
+      person.updated_at = Firebase.ServerValue.TIMESTAMP;
+
+      //Handle weird firebase bug that triggers on undefined values
+      pruneUndefined( person );
+      vm.user.people.$save( person.id );
     }
 
     function pruneUndefined( object ) {

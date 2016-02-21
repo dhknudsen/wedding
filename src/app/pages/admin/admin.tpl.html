@@ -79,27 +79,44 @@
               <col width="*">
               <col width="10%">
               <col width="15%">
+              <col width="10%">
               <col width="*">
             </colgroup>
             <thead>
               <tr>
-                <th><a ng-click="vm.sort('name')">Navn</a></th>
-                <th><a ng-click="vm.sort('email')">Email</a></th>
-                <th><a ng-click="vm.sort('phone')">Telefon</a></th>
-                <th><a ng-click="vm.sort('comments')">Kommentar</a></th>
-                <th><a ng-click="vm.sort('rsvp')">RVSP</a></th>
-                <th><a ng-click="vm.sort('invite')">Invitation</a></th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('name') }">
+                  <a ng-click="vm.sort('name')">Navn</a>
+                </th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('email') }">
+                  <a ng-click="vm.sort('email')">Email</a>
+                </th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('phone') }">
+                  <a ng-click="vm.sort('phone')">Telefon</a>
+                </th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('comments') }">
+                  <a ng-click="vm.sort('comments')">Kommentar</a>
+                </th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('rsvp') }">
+                  <a ng-click="vm.sort('rsvp')">RVSP</a>
+                </th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('invite') }">
+                  <a ng-click="vm.sort('invite')">Invitation</a>
+                </th>
+                <th ng-class="{ 'drop-up': vm.sortReverse, 'add-caret' : vm.hasCaret('updated_at') }">
+                  <a ng-click="vm.sort('updated_at')">Opdateret</a>
+                </th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="person in vm.people | orderBy:vm.sortType:vm.sortReverse | filter:vm.searchFilter | filter: { status: vm.statusFilter }">
+              <tr ng-repeat="person in vm.people | orderBy:[ vm.nullsToBottom, vm.sortType ]:vm.sortReverse | filter:vm.searchFilter | filter: { status: vm.statusFilter }">
                 <td>{{ person.name }}</td>
                 <td>{{ person.email }}</td>
                 <td>{{ person.phone }}</td>
                 <td>{{ person.comments }}</td>
                 <td><span class="label" ng-class="vm.setStatusClass( person.status )">{{ person.rsvp }}</span></td>
                 <td>{{ person.invite }}</td>
+                <td>{{ person.updated_at ? (person.updated_at | timeAgo) : '' }}</td>
                 <td><button class="btn btn-link" ng-click="vm.editUser( person.uid )"><i class="fa fa-pencil"></i></button></td>
               </tr>
             </tbody>

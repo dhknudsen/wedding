@@ -106,6 +106,7 @@ module.exports = {
         //'vendor/angulargrid/angulargrid.js',
 
         // Other
+        'vendor/angular-timeago/src/timeAgo.js'
         //'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
         //'vendor/angular-image-crop/image-crop.js'
 		],
